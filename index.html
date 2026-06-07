@@ -621,23 +621,95 @@ a{text-decoration:none;color:inherit}
     </div>
   </div>
 
-  <!-- CATÉGORIES -->
-  <section class="section" style="background:#fff">
-    <div class="section-inner">
-      <div class="fu"><div class="sec-tag">Nos spécialités</div><h2 class="sec-h2">Dans quel domaine avez-vous besoin d'aide ?</h2><p class="sec-sub">Sélectionnez votre besoin. ArtiZango vous propose les meilleurs artisans disponibles et évalués par notre équipe.</p></div>
-      <div class="cats-grid" id="catsGrid">
-        <div class="cat fu" onclick="filterCat('Plombier')"><span class="cat-icon">🔧</span><div class="cat-name">Plomberie</div><div class="cat-count">24 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Électricien')"><span class="cat-icon">⚡</span><div class="cat-name">Électricité</div><div class="cat-count">31 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Climatisation')"><span class="cat-icon">❄️</span><div class="cat-name">Climatisation</div><div class="cat-count">18 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Menuisier')"><span class="cat-icon">🪵</span><div class="cat-name">Menuiserie</div><div class="cat-count">22 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Maçon')"><span class="cat-icon">🧱</span><div class="cat-name">Maçonnerie</div><div class="cat-count">19 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Peintre')"><span class="cat-icon">🎨</span><div class="cat-name">Peinture</div><div class="cat-count">27 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Informatique')"><span class="cat-icon">💻</span><div class="cat-name">Informatique</div><div class="cat-count">14 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-        <div class="cat fu" onclick="filterCat('Ménage')"><span class="cat-icon">🧹</span><div class="cat-name">Ménage</div><div class="cat-count">16 artisans</div><div class="cat-verified">✓ Tous certifiés</div></div>
-      </div>
-    </div>
-  </section>
+ <!-- CATÉGORIES -->
+<section class="section" style="background:#fff">
+  <div class="section-inner">
 
+    <!-- En-tête -->
+    <div class="fu">
+      <div class="sec-tag">Nos spécialités</div>
+      <h2 class="sec-h2">Dans quel domaine avez-vous besoin d'aide ?</h2>
+      <p class="sec-sub">Sélectionnez votre besoin. ArtiZango vous propose les meilleurs artisans disponibles, évalués et sélectionnés par notre équipe.</p>
+    </div>
+
+    <!-- Grille des catégories -->
+    <div class="cats-grid" id="catsGrid">
+
+      <div class="cat fu" onclick="filterCat('Plombier')">
+        <span class="cat-icon">🔧</span>
+        <div class="cat-name">Plomberie</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Électricien')">
+        <span class="cat-icon">⚡</span>
+        <div class="cat-name">Électricité</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Climatisation')">
+        <span class="cat-icon">❄️</span>
+        <div class="cat-name">Climatisation</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Menuisier')">
+        <span class="cat-icon">🪵</span>
+        <div class="cat-name">Menuiserie</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Maçon')">
+        <span class="cat-icon">🧱</span>
+        <div class="cat-name">Maçonnerie</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Peintre')">
+        <span class="cat-icon">🎨</span>
+        <div class="cat-name">Peinture</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Mécanicien')">
+        <span class="cat-icon">🔩</span>
+        <div class="cat-name">Mécanique</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Ménage')">
+        <span class="cat-icon">🧹</span>
+        <div class="cat-name">Ménage</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Maître d\'Œuvre')">
+        <span class="cat-icon">📐</span>
+        <div class="cat-name">Maître d'Œuvre</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Achat Chine')">
+        <span class="cat-icon">🌏</span>
+        <div class="cat-name">Achat en Chine</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Construction')">
+        <span class="cat-icon">🏗️</span>
+        <div class="cat-name">Construction</div>
+        <div class="cat-verified">✓ Sélectionnés</div>
+      </div>
+
+      <div class="cat fu" onclick="filterCat('Autres')">
+        <span class="cat-icon">➕</span>
+        <div class="cat-name">Autres</div>
+        <div class="cat-verified">Nous consulter</div>
+      </div>
+
+    </div>
+  </div>
+</section>
   <!-- ARTISANS -->
   <section class="section" id="artisanSection">
     <div class="section-inner">
@@ -647,44 +719,55 @@ a{text-decoration:none;color:inherit}
     </div>
   </section>
 
-  <!-- ORIGIN SECTION -->
-  <section class="origin-section">
-    <div class="origin-inner">
-      <div class="origin-tag">Ce qui nous rend différents</div>
-      <h2 class="origin-h2">Artisans sélectionnés <br>après vérification terrain</h2>
-      <p class="origin-sub">ArtiZango n'est pas un annuaire. Chaque artisan référencé sur notre plateforme a travaillé à nos côtés. Nous connaissons leur savoir-faire, leur ponctualité, leur rapport aux clients.</p>
-      <div class="origin-cards">
-        <div class="origin-card fu">
-          <div class="origin-card-icon">🏗️</div>
-          <div>
-            <div class="origin-card-title">Chantiers communs</div>
-            <div class="origin-card-desc">Nous avons réalisé des travaux ensemble. Ce n'est pas un CV qu'on a lu , c'est une qualité qu'on a vue.</div>
-          </div>
-        </div>
-        <div class="origin-card fu">
-          <div class="origin-card-icon">👁️</div>
-          <div>
-            <div class="origin-card-title">Évaluation terrain</div>
-            <div class="origin-card-desc">Vitesse, soin du détail, respect du client, propreté du chantier : tout a été observé et noté par notre équipe.</div>
-          </div>
-        </div>
-        <div class="origin-card fu">
-          <div class="origin-card-icon">🤝</div>
-          <div>
-            <div class="origin-card-title">Notre réputation en jeu</div>
-            <div class="origin-card-desc">Quand nous vous recommandons un artisan, c'est ArtiZango qui s'engage. Nous ne référençons que ceux que nous recommanderions à notre propre famille.</div>
-          </div>
-        </div>
-        <div class="origin-card fu">
-          <div class="origin-card-icon">🔄</div>
-          <div>
-            <div class="origin-card-title">Suivi continu</div>
-            <div class="origin-card-desc">Après chaque mission client, nous collectons votre retour. Un artisan qui déçoit est retiré, immédiatement et sans exception.</div>
-          </div>
-        </div>
+  <!-- QUI SOMMES-NOUS -->
+<section class="origin-section" id="quiSommesNous">
+  <div class="origin-inner">
+    <div class="origin-tag">Qui sommes-nous</div>
+    <h2 class="origin-h2">Un réseau né sur le terrain,<br>pas derrière un écran</h2>
+    <p class="origin-sub">ArtiZango est né d'une expérience terrain. Nos réalisations (un immeuble R+3 de 24 logements et boutiques à Anono, une villa de 250 m² à Bingerville, 8 maisons basses totalisant 500 m² à Bingerville, la poursuite d'un immeuble R+2 déjà en cours, 2 logements étudiants à Anono, et d'autres chantiers encore) nous ont permis de constituer un panel d'artisans aux compétences reconnues et éprouvées. <strong>Chaque artisan de notre réseau a été évalué et sélectionné directement sur l'un de ces chantiers.</strong></p>
+
+    <!-- Bloc réalisations -->
+    <div style="background:rgba(0,168,107,.1);border:1px solid rgba(0,168,107,.25);border-radius:16px;padding:20px;margin-bottom:24px">
+      <div style="font-size:13px;font-weight:700;color:#4ADE80;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+        <span>🏗️</span> Nos réalisations : visibles sur demande
       </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+          <div style="font-size:20px;margin-bottom:6px">🏠</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Construction de maisons</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Réalisations à Bingerville : maisons individuelles visitables sur rendez-vous.</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+          <div style="font-size:20px;margin-bottom:6px">🏗️</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Construction & Bâtiment</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Réalisations diverses en gros œuvre, second œuvre et finitions sur Abidjan.</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+          <div style="font-size:20px;margin-bottom:6px">🔧</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Reprise de malfaçons</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Correction de travaux mal réalisés ; plomberie, électricité, maçonnerie, carrelage.</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+          <div style="font-size:20px;margin-bottom:6px">🚗</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Réparation de véhicules</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Entretien et réparation auto ; mécaniciens sélectionnés sur nos propres véhicules.</div>
+        </div>
+
+      </div>
+      <button onclick="openDevisFor(null)"
+        style="width:100%;margin-top:16px;height:44px;background:rgba(0,168,107,.25);border:1px solid rgba(0,168,107,.4);color:#4ADE80;font-size:13px;font-weight:700;border-radius:10px;cursor:pointer;font-family:inherit;transition:all .2s"
+        onmouseover="this.style.background='rgba(0,168,107,.35)'"
+        onmouseout="this.style.background='rgba(0,168,107,.25)'">
+        📸 Demander à voir nos réalisations
+      </button>
     </div>
-  </section>
+
+  </div>
+</section>
 
   <!-- VERIFY SECTION -->
   <section class="verify-section">
