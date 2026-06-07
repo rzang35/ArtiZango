@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtiZango — Des artisans vérifiés, un prix juste, zéro mauvaise surprise</title>
+<meta name="description" content="ArtiZango : nous analysons votre besoin, estimons le juste prix et vous mettons en relation avec des artisans que nous avons évalués et sélectionnés sur nos chantiers à Abidjan.">
+<meta name="theme-color" content="#00A86B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════
+   DESIGN SYSTEM
+════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#00A86B;--gd:#007A4D;--gl:#E8F8F2;--gxl:#F2FCF8;
+  --or:#FF8C42;--orl:#FFF4EC;--ord:#C8600A;
+  --bg:#F8FAFC;--white:#FFFFFF;
+  --t1:#0D1B2A;--t2:#4A5568;--t3:#94A3B8;
+  --bd:#E8EAED;--bd2:#CBD5E1;
+  --amber:#F59E0B;--red:#EF4444;--blue:#3B82F6;
+  --sh1:0 1px 4px rgba(0,0,0,.06);
+  --sh2:0 4px 16px rgba(0,0,0,.08);
+  --sh3:0 12px 40px rgba(0,0,0,.1);
+  --r:16px;--rm:12px;--rs:8px;
+  --f:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);font-size:16px;color:var(--t1);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select,textarea{font-family:var(--f)}
+a{text-decoration:none;color:inherit}
+
+/* PAGES */
+.page{display:none;min-height:100vh;flex-direction:column}
+.page.on{display:flex}
+.subpage{display:none;flex-direction:column;min-height:100vh}
+.subpage.on{display:flex}
+
+/* ════════════════════════════════════════
+   NAV
+════════════════════════════════════════ */
+.nav{position:sticky;top:0;z-index:200;height:60px;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.nav-logo{font-size:20px;font-weight:800;color:var(--g);letter-spacing:-.5px;display:flex;align-items:center;gap:4px;cursor:pointer}
+.nav-logo-dot{width:7px;height:7px;background:var(--or);border-radius:50%}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-btn{font-size:13px;font-weight:600;padding:8px 14px;border-radius:var(--rm);border:none;cursor:pointer;transition:all .18s}
+.nav-btn-ghost{background:none;color:var(--t2)}
+.nav-btn-ghost:hover{background:var(--bg)}
+.nav-btn-primary{background:var(--g);color:#fff;box-shadow:0 2px 8px rgba(0,168,107,.25)}
+.nav-btn-primary:hover{background:var(--gd);transform:translateY(-1px)}
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero{background:linear-gradient(160deg,#F2FCF8 0%,#FFF8F3 100%);padding:52px 20px 48px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-60px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,168,107,.07) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:360px;height:360px;background:radial-gradient(circle,rgba(255,140,66,.06) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--bd);border-radius:40px;padding:5px 14px 5px 8px;font-size:12px;font-weight:600;color:var(--t2);margin-bottom:22px;box-shadow:var(--sh1)}
+.hero-pill-dot{width:7px;height:7px;background:var(--g);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero-h1{font-size:clamp(28px,7vw,46px);font-weight:800;line-height:1.12;letter-spacing:-1.2px;color:var(--t1);margin-bottom:14px}
+.hero-h1 em{font-style:normal;color:var(--g)}
+.hero-sub{font-size:clamp(14px,3vw,17px);color:var(--t2);line-height:1.65;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+.hero-search{background:#fff;border-radius:var(--r);box-shadow:var(--sh3);border:1px solid var(--bd);padding:6px;display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.hero-search-field{display:flex;align-items:center;gap:10px;padding:8px 14px;background:var(--bg);border-radius:var(--rm)}
+.hero-search-field svg{color:var(--t3);flex-shrink:0}
+.hero-search-field input{flex:1;border:none;outline:none;font-size:14px;color:var(--t1);background:transparent}
+.hero-search-field input::placeholder{color:var(--t3)}
+.hero-search-field select{flex:1;border:none;outline:none;font-size:14px;color:var(--t2);background:transparent;cursor:pointer}
+.hero-cta-row{display:flex;flex-direction:column;gap:10px}
+.btn-hero-main{width:100%;height:52px;background:var(--g);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:var(--rm);cursor:pointer;box-shadow:0 4px 16px rgba(0,168,107,.3);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-hero-main:hover{background:var(--gd);transform:translateY(-2px)}
+.btn-hero-sec{width:100%;height:48px;background:#fff;color:var(--t1);font-size:15px;font-weight:600;border:1px solid var(--bd2);border-radius:var(--rm);cursor:pointer;transition:all .2s}
+.btn-hero-sec:hover{border-color:var(--g);color:var(--g)}
+.hero-trust{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:24px}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--t2)}
+
+/* ════════════════════════════════════════
+   STATS BAND
+════════════════════════════════════════ */
+.stats-band{background:#fff;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:20px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:700px;margin:0 auto}
+.stat-item{text-align:center;padding:10px}
+.stat-n{font-size:24px;font-weight:800;color:var(--t1);letter-spacing:-1px}
+.stat-n span{color:var(--g)}
+.stat-l{font-size:11px;font-weight:600;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+
+/* ════════════════════════════════════════
+   SECTIONS
+════════════════════════════════════════ */
+.section{padding:52px 20px}
+.section-inner{max-width:900px;margin:0 auto}
+.sec-tag{display:inline-block;background:var(--gl);color:var(--gd);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sec-h2{font-size:clamp(20px,4vw,28px);font-weight:800;letter-spacing:-.5px;line-height:1.2;color:var(--t1)}
+.sec-sub{font-size:15px;color:var(--t2);margin-top:8px;line-height:1.6}
+
+/* ════════════════════════════════════════
+   CATEGORIES
+════════════════════════════════════════ */
+.cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.cat{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:18px 10px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--sh1)}
+.cat:hover,.cat:active{border-color:var(--g);background:var(--gxl);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,168,107,.12)}
+.cat-icon{font-size:26px;margin-bottom:8px;display:block}
+.cat-name{font-size:12px;font-weight:700;color:var(--t2);line-height:1.3}
+.cat-count{font-size:10px;color:var(--t3);margin-top:3px}
+
+/* ════════════════════════════════════════
+   ARTISAN CARDS (SANS COORDONNÉES)
+════════════════════════════════════════ */
+.cards-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}
+.a-card{background:#fff;border-radius:var(--r);border:1px solid var(--bd);overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--sh1)}
+.a-card:hover{box-shadow:var(--sh3);border-color:transparent;transform:translateY(-2px)}
+.a-card-top-bar{height:4px}
+.a-card-body{padding:18px}
+.a-card-row{display:flex;align-items:flex-start;gap:14px}
+.a-initials{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex-shrink:0;font-family:var(--f)}
+.a-info{flex:1;min-width:0}
+.a-name{font-size:16px;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.a-trade{font-size:13px;color:var(--t2);margin-top:2px}
+.a-location{font-size:12px;color:var(--t3);margin-top:4px;display:flex;align-items:center;gap:4px}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.02em}
+.b-verified{background:var(--gl);color:var(--gd)}
+.b-reactive{background:#FFF4EC;color:#B35000}
+.b-top{background:#FEF9E7;color:#856404}
+.a-rating{display:flex;align-items:center;gap:6px;margin-top:10px}
+.a-stars{color:var(--amber);font-size:13px;letter-spacing:1px}
+.a-score{font-size:15px;font-weight:700;color:var(--t1)}
+.a-reviews{font-size:12px;color:var(--t3)}
+.a-desc{font-size:13px;color:var(--t2);line-height:1.55;margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.a-card-footer{padding:14px 18px 18px;border-top:1px solid var(--bd);display:flex;gap:8px}
+.btn-devis{flex:1;height:44px;background:var(--g);color:#fff;border:none;border-radius:var(--rm);font-size:14px;font-weight:700;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-devis:hover{background:var(--gd)}
+.btn-profile{height:44px;padding:0 16px;border:1px solid var(--bd2);border-radius:var(--rm);background:#fff;color:var(--t2);font-size:13px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-profile:hover{border-color:var(--g);color:var(--g)}
+
+/* ════════════════════════════════════════
+   HOW IT WORKS
+════════════════════════════════════════ */
+.how-bg{background:linear-gradient(160deg,var(--gxl) 0%,#fff 100%)}
+.steps{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.step{background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:24px;display:flex;align-items:flex-start;gap:16px}
+.step-num{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0}
+.sn1{background:var(--gl);color:var(--g)}
+.sn2{background:var(--orl);color:var(--ord)}
+.sn3{background:#EFF6FF;color:#1D4ED8}
+.step-body .step-title{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:5px}
+.step-body .step-desc{font-size:14px;color:var(--t2);line-height:1.6}
+
+/* ════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════ */
+.testi-grid{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.testi{background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:22px}
+.testi-stars{color:var(--amber);font-size:14px;margin-bottom:10px}
+.testi-text{font-size:14px;color:var(--t2);line-height:1.7;font-style:italic;margin-bottom:14px}
+.testi-text::before{content:'\201C';font-size:28px;color:var(--g);line-height:0;vertical-align:-10px;margin-right:2px;font-family:Georgia,serif;font-style:normal}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.testi-name{font-size:13px;font-weight:700;color:var(--t1)}
+.testi-service{font-size:12px;color:var(--t3)}
+
+/* ════════════════════════════════════════
+   CTA BAND
+════════════════════════════════════════ */
+.cta-band{background:linear-gradient(135deg,var(--g) 0%,var(--gd) 100%);padding:52px 20px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px}
+.cta-inner{position:relative;z-index:1;max-width:520px;margin:0 auto}
+.cta-h2{font-size:clamp(22px,5vw,32px);font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:10px;line-height:1.2}
+.cta-sub{font-size:15px;color:rgba(255,255,255,.85);margin-bottom:28px;line-height:1.6}
+.cta-btns{display:flex;flex-direction:column;gap:10px}
+.cta-btn1{height:52px;background:#fff;color:var(--gd);font-size:16px;font-weight:700;border:none;border-radius:var(--rm);cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.cta-btn1:hover{transform:translateY(-2px)}
+.cta-btn2{height:48px;background:rgba(255,255,255,.15);color:#fff;font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,.3);border-radius:var(--rm);cursor:pointer;transition:all .2s;backdrop-filter:blur(6px)}
+.cta-btn2:hover{background:rgba(255,255,255,.25)}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+.footer{background:#0D1B2A;color:#64748B;padding:36px 20px 28px;font-size:13px;margin-top:auto}
+.footer-logo{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
+.footer-tagline{font-size:12px;color:#475569;margin-bottom:20px}
+.footer-links{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+.footer-link{color:#64748B;cursor:pointer;transition:color .15s}
+.footer-link:hover{color:#fff}
+.footer-copy{color:#334155;font-size:12px;border-top:1px solid #1E293B;padding-top:16px}
+
+/* ════════════════════════════════════════
+   SUBPAGE TOPBAR
+════════════════════════════════════════ */
+.sub-nav{height:56px;background:#fff;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px;padding:0 16px;position:sticky;top:0;z-index:100;flex-shrink:0}
+.sub-back{background:none;border:none;cursor:pointer;color:var(--t2);font-size:26px;line-height:1;padding:4px 6px;border-radius:var(--rs)}
+.sub-title{font-size:16px;font-weight:700;color:var(--t1);flex:1}
+
+/* ════════════════════════════════════════
+   FICHE ARTISAN
+════════════════════════════════════════ */
+.profile-cover{height:100px;position:relative;overflow:hidden}
+.profile-cover-grad{position:absolute;inset:0;background:linear-gradient(135deg,var(--g),var(--gd))}
+.profile-cover-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.1) 1px,transparent 1px);background-size:18px 18px}
+.profile-section{padding:0 18px}
+.profile-av-row{display:flex;align-items:flex-end;gap:14px;margin-top:-26px;margin-bottom:14px}
+.profile-av{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;border:4px solid #fff;box-shadow:var(--sh2)}
+.profile-name{font-size:20px;font-weight:800;color:var(--t1);padding-bottom:2px}
+.profile-trade{font-size:14px;color:var(--t2);margin-top:2px}
+.profile-rating{display:flex;align-items:center;gap:8px;margin-top:10px;margin-bottom:14px}
+.profile-stars{color:var(--amber);font-size:16px}
+.profile-score{font-size:18px;font-weight:800;color:var(--t1)}
+.profile-count{font-size:13px;color:var(--t3)}
+.profile-desc{font-size:15px;color:var(--t2);line-height:1.7;margin-bottom:16px}
+.profile-label{font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin:18px 0 10px}
+.info-tile{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:var(--rm);margin-bottom:8px;font-size:14px;color:var(--t1)}
+.info-tile-icon{font-size:18px}
+/* NO CONTACT — only devis */
+.profile-cta-box{background:var(--gxl);border:1px solid rgba(0,168,107,.18);border-radius:var(--r);padding:20px;margin:20px 0}
+.profile-cta-box p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:14px}
+.btn-devis-lg{width:100%;height:52px;background:var(--g);color:#fff;border:none;border-radius:var(--rm);font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(0,168,107,.3);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-devis-lg:hover{background:var(--gd);transform:translateY(-1px)}
+.review-block{background:var(--bg);border-radius:var(--rm);padding:14px;margin-bottom:10px}
+.review-top{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.r-av{width:30px;height:30px;border-radius:50%;background:var(--gl);color:var(--gd);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.r-name{font-size:13px;font-weight:700}
+.r-date{font-size:11px;color:var(--t3);margin-left:auto}
+.r-stars{color:var(--amber);font-size:12px}
+.r-text{font-size:13px;color:var(--t2);line-height:1.55}
+
+/* ════════════════════════════════════════
+   DEVIS FORM
+════════════════════════════════════════ */
+.form-wrap{padding:20px 18px 48px;max-width:600px;margin:0 auto;flex:1}
+.form-intro{background:var(--gxl);border:1px solid rgba(0,168,107,.15);border-radius:var(--r);padding:16px;margin-bottom:24px}
+.form-intro-title{font-size:15px;font-weight:700;color:var(--gd);margin-bottom:4px}
+.form-intro-sub{font-size:13px;color:var(--t2);line-height:1.5}
+.f-group{margin-bottom:18px}
+.f-label{display:block;font-size:13px;font-weight:700;color:var(--t2);margin-bottom:6px}
+.f-input{width:100%;padding:13px 14px;border:1.5px solid var(--bd);border-radius:var(--rm);font-size:15px;font-family:var(--f);color:var(--t1);background:#fff;outline:none;transition:border-color .18s}
+.f-input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(0,168,107,.1)}
+.f-input::placeholder{color:var(--t3)}
+.f-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%2394A3B8' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.f-textarea{resize:vertical;min-height:100px}
+.btn-submit{width:100%;height:54px;background:var(--g);color:#fff;font-size:17px;font-weight:700;border:none;border-radius:var(--rm);cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(0,168,107,.3);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-submit:hover{background:var(--gd);transform:translateY(-1px)}
+.success-box{background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:36px 24px;text-align:center;margin:32px 0}
+.success-icon{font-size:56px;margin-bottom:16px}
+.success-h{font-size:22px;font-weight:800;color:var(--t1);margin-bottom:8px}
+.success-p{font-size:15px;color:var(--t2);line-height:1.6}
+
+/* ════════════════════════════════════════
+   ADMIN DASHBOARD
+════════════════════════════════════════ */
+.admin-wrap{padding:16px 18px 60px;flex:1}
+.admin-header{margin-bottom:20px}
+.admin-title{font-size:20px;font-weight:800;color:var(--t1)}
+.admin-sub{font-size:13px;color:var(--t3);margin-top:3px}
+.admin-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+.admin-stat{background:#fff;border-radius:var(--rm);border:1px solid var(--bd);padding:16px}
+.admin-stat-n{font-size:26px;font-weight:800;color:var(--t1);letter-spacing:-1px}
+.admin-stat-n span{color:var(--g)}
+.admin-stat-l{font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;margin-top:2px}
+.admin-section-title{font-size:13px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.demand-card{background:#fff;border-radius:var(--rm);border:1px solid var(--bd);padding:16px;margin-bottom:10px}
+.demand-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+.demand-icon{width:38px;height:38px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.demand-info{flex:1}
+.demand-name{font-size:14px;font-weight:700;color:var(--t1)}
+.demand-meta{font-size:12px;color:var(--t3);margin-top:2px}
+.demand-tel{font-size:14px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.demand-desc{font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:10px;background:var(--bg);padding:10px;border-radius:var(--rs)}
+.status-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.status-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px}
+.s-new{background:#EFF6FF;color:#1D4ED8}
+.s-contact{background:#FFF4EC;color:#B35000}
+.s-sold{background:var(--gl);color:var(--gd)}
+.s-closed{background:#F1F5F9;color:#64748B}
+.status-select{flex:1;min-width:120px;height:32px;border:1px solid var(--bd);border-radius:var(--rs);font-size:12px;font-family:var(--f);color:var(--t2);padding:0 8px;background:#fff;outline:none}
+
+/* ════════════════════════════════════════
+   ARTISAN OPPORTUNITIES
+════════════════════════════════════════ */
+.opps-wrap{padding:16px 18px 60px;flex:1}
+.opp-card{background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:18px;margin-bottom:12px;cursor:pointer;transition:all .18s}
+.opp-card:hover{box-shadow:var(--sh2);border-color:transparent}
+.opp-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.opp-icon{width:44px;height:44px;border-radius:var(--rm);background:var(--gxl);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.opp-title{font-size:15px;font-weight:700;color:var(--t1)}
+.opp-meta{font-size:12px;color:var(--t3);margin-top:3px;display:flex;align-items:center;gap:6px}
+.opp-dot{width:4px;height:4px;background:var(--t3);border-radius:50%}
+.opp-body{background:var(--bg);border-radius:var(--rm);padding:12px;margin-bottom:14px}
+.opp-body p{font-size:13px;color:var(--t2);line-height:1.55}
+.opp-body p strong{color:var(--t1)}
+.opp-cta{display:flex;align-items:center;gap:10px}
+.btn-buy{flex:1;height:44px;background:var(--or);color:#fff;border:none;border-radius:var(--rm);font-size:14px;font-weight:700;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-buy:hover{background:var(--ord)}
+.opp-price{font-size:13px;font-weight:700;color:var(--t2)}
+.opp-blur{filter:blur(6px);user-select:none;pointer-events:none;font-size:14px;color:var(--t2)}
+
+/* ════════════════════════════════════════
+   TOAST
+════════════════════════════════════════ */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#0D1B2A;color:#fff;font-size:13px;font-weight:600;padding:12px 22px;border-radius:40px;z-index:9999;opacity:0;transition:all .25s;white-space:nowrap;pointer-events:none;box-shadow:var(--sh3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ════════════════════════════════════════
+   FADE ANIMATIONS
+════════════════════════════════════════ */
+.fu{opacity:0;transform:translateY(20px);transition:opacity .45s ease,transform .45s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — TABLET+
+════════════════════════════════════════ */
+@media(min-width:600px){
+  .hero-cta-row{flex-direction:row}
+  .btn-hero-main,.btn-hero-sec{width:auto;flex:1}
+  .cats-grid{grid-template-columns:repeat(4,1fr);} .cats-grid .cat-count{display:none}
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{flex-direction:row}
+  .step{flex:1}
+  .testi-grid{flex-direction:row}
+  .testi{flex:1}
+  .admin-stats{grid-template-columns:repeat(4,1fr)}
+  .cta-btns{flex-direction:row;justify-content:center}
+  .cta-btn1,.cta-btn2{width:auto;padding:0 28px}
+}
+@media(min-width:900px){
+  .cards-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* ════════════════════════════════════════
+   TRUST & CERTIFICATION SYSTEM
+════════════════════════════════════════ */
+
+/* Cert badge — sceau de certification premium */
+.cert-seal{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#00A86B,#007A4D);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.04em;box-shadow:0 2px 8px rgba(0,168,107,.35)}
+.cert-seal-icon{font-size:13px}
+
+/* Trust banner — bande de réassurance pleine largeur */
+.trust-banner{background:linear-gradient(90deg,#0D1B2A 0%,#0F2A1A 100%);padding:14px 20px;overflow:hidden}
+.trust-banner-inner{display:flex;align-items:center;gap:28px;white-space:nowrap;animation:marquee 24s linear infinite;width:max-content}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.trust-banner-item{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85)}
+.trust-banner-dot{width:5px;height:5px;background:#00A86B;border-radius:50%;flex-shrink:0}
+
+/* Process verify — section "Notre processus de sélection" */
+.verify-section{background:linear-gradient(160deg,#0D1B2A 0%,#0F2A1A 100%);padding:56px 20px;position:relative;overflow:hidden}
+.verify-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,168,107,.06) 1px,transparent 1px);background-size:20px 20px}
+.verify-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.verify-tag{display:inline-block;background:rgba(0,168,107,.2);color:#4ADE80;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;border:1px solid rgba(0,168,107,.3)}
+.verify-h2{font-size:clamp(22px,4vw,30px);font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.2;margin-bottom:8px}
+.verify-sub{font-size:15px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:32px;max-width:560px}
+.verify-steps{display:grid;grid-template-columns:1fr;gap:14px}
+.vstep{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:20px;display:flex;align-items:flex-start;gap:14px;transition:all .2s}
+.vstep:hover{background:rgba(0,168,107,.08);border-color:rgba(0,168,107,.25)}
+.vstep-icon{width:40px;height:40px;border-radius:var(--rm);background:rgba(0,168,107,.15);border:1px solid rgba(0,168,107,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.vstep-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px}
+.vstep-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55}
+.vstep-num{font-size:10px;font-weight:700;color:#4ADE80;background:rgba(0,168,107,.2);padding:2px 7px;border-radius:10px;margin-left:auto;flex-shrink:0;margin-top:2px}
+
+/* Trust stats row inside verify section */
+.verify-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08)}
+.vstat{text-align:center}
+.vstat-n{font-size:28px;font-weight:800;color:#4ADE80;letter-spacing:-1px}
+.vstat-l{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px;font-weight:500}
+
+/* Certified card upgrade */
+.cert-ribbon{position:absolute;top:0;right:0;background:linear-gradient(135deg,#00A86B,#007A4D);color:#fff;font-size:9px;font-weight:700;padding:4px 10px;border-bottom-left-radius:10px;letter-spacing:.05em}
+.a-card{position:relative}
+
+/* Profile cert block */
+.profile-cert-block{background:linear-gradient(135deg,#0D1B2A,#0F2A1A);border-radius:var(--r);padding:20px;margin:16px 0;border:1px solid rgba(0,168,107,.2)}
+.pcb-title{font-size:13px;font-weight:700;color:#4ADE80;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.pcb-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.pcb-item:last-child{border-bottom:none;padding-bottom:0}
+.pcb-check{width:22px;height:22px;border-radius:50%;background:rgba(0,168,107,.2);border:1px solid rgba(0,168,107,.4);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:#4ADE80}
+.pcb-text{font-size:13px;color:rgba(255,255,255,.8)}
+
+/* Form trust block */
+.form-trust-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.fts-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gd);background:var(--gl);padding:6px 11px;border-radius:20px;border:1px solid rgba(0,168,107,.2)}
+
+/* Cat card upgrade — verified count badge */
+.cat-verified{font-size:9px;font-weight:700;color:var(--gd);background:var(--gl);padding:2px 7px;border-radius:10px;margin-top:4px;display:inline-block;border:1px solid rgba(0,168,107,.15)}
+
+/* Nav certified badge */
+.nav-cert{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--g);background:var(--gl);padding:4px 10px;border-radius:20px;border:1px solid rgba(0,168,107,.2)}
+
+/* Section promise */
+.promise-bar{background:var(--gl);border-top:1px solid rgba(0,168,107,.15);border-bottom:1px solid rgba(0,168,107,.15);padding:14px 20px}
+.promise-bar-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.promise-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--gd)}
+.promise-icon{width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid rgba(0,168,107,.2);display:flex;align-items:center;justify-content:center;font-size:14px}
+
+@media(min-width:600px){
+  .verify-steps{grid-template-columns:repeat(2,1fr)}
+  .vstep:last-child{grid-column:1/-1}
+  .vstep:nth-child(3):nth-last-child(1){grid-column:1/-1;max-width:50%;margin:0 auto;width:100%}
+}
+
+
+@media(min-width:640px){#navCertBadge{display:flex!important}}
+
+/* ════════════ ARTIZANGO — NOUVEAUX COMPOSANTS ════════════ */
+
+/* Étapes du parcours client (wizard) */
+.wizard-wrap{max-width:600px;margin:0 auto;padding:24px 20px 60px;flex:1;overflow-y:auto}
+.wizard-step-indicator{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:28px}
+.wsi-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .25s;flex-shrink:0}
+.wsi-dot.done{background:var(--g);color:#fff}
+.wsi-dot.active{background:var(--g);color:#fff;box-shadow:0 0 0 4px rgba(0,168,107,.18)}
+.wsi-dot.pending{background:var(--bd);color:var(--t3)}
+.wsi-line{flex:1;height:2px;background:var(--bd);max-width:48px;transition:background .25s}
+.wsi-line.done{background:var(--g)}
+
+/* Hero refonte */
+.hero-value-props{display:flex;flex-direction:column;gap:10px;margin:22px 0 28px;text-align:left}
+.hvp-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:#fff;border-radius:var(--rm);border:1px solid var(--bd);box-shadow:var(--sh1)}
+.hvp-icon{width:36px;height:36px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.hvp-icon-g{background:var(--gl)}
+.hvp-icon-o{background:var(--orl)}
+.hvp-body .hvp-title{font-size:14px;font-weight:700;color:var(--t1)}
+.hvp-body .hvp-desc{font-size:12px;color:var(--t2);margin-top:2px;line-height:1.5}
+
+/* Selection artisans (max 5, format premium) */
+.selection-grid{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+.sel-card{background:#fff;border-radius:var(--r);border:1.5px solid var(--bd);padding:20px;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.sel-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--g),var(--gd))}
+.sel-card:hover{border-color:var(--g);box-shadow:var(--sh3);transform:translateY(-2px)}
+.sel-card.chosen{border-color:var(--g);background:var(--gxl);box-shadow:0 0 0 3px rgba(0,168,107,.12)}
+.sel-card-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.sel-av{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;font-family:'Inter',sans-serif}
+.sel-info{flex:1;min-width:0}
+.sel-name{font-size:15px;font-weight:700;color:var(--t1)}
+.sel-trade{font-size:13px;color:var(--t2);margin-top:1px}
+.sel-zone{font-size:12px;color:var(--t3);margin-top:3px;display:flex;align-items:center;gap:4px}
+.sel-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.sel-rating{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sel-stars{color:var(--amber);font-size:13px}
+.sel-score{font-size:14px;font-weight:700;color:var(--t1)}
+.sel-reviews{font-size:11px;color:var(--t3)}
+.reliability-bar{margin-bottom:14px}
+.rb-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+.rb-label span:first-child{color:var(--t2);font-weight:600}
+.rb-label span:last-child{font-weight:700}
+.rb-track{height:6px;background:var(--bd);border-radius:3px;overflow:hidden}
+.rb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--g),#4ADE80);transition:width .4s ease}
+.sel-spec{font-size:12px;color:var(--t2);background:var(--bg);padding:8px 12px;border-radius:var(--rs);margin-bottom:14px;line-height:1.5}
+.btn-choose{width:100%;height:48px;background:var(--g);color:#fff;border:none;border-radius:var(--rm);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;transition:all .2s;box-shadow:0 3px 10px rgba(0,168,107,.25)}
+.btn-choose:hover{background:var(--gd);transform:translateY(-1px)}
+.btn-choose.chosen-state{background:var(--gd);cursor:default}
+
+/* Processing screen */
+.processing-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;padding:32px 24px;text-align:center}
+.processing-anim{width:72px;height:72px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px;animation:proc-pulse 2s infinite}
+@keyframes proc-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(0,168,107,.3)}50%{transform:scale(1.06);box-shadow:0 0 0 12px rgba(0,168,107,0)}}
+.processing-h{font-size:20px;font-weight:800;color:var(--t1);margin-bottom:8px;letter-spacing:-.3px}
+.processing-sub{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:24px}
+.processing-steps{width:100%;max-width:340px;margin:0 auto}
+.proc-step{display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:var(--rm);margin-bottom:8px;border:1px solid var(--bd)}
+.proc-step-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.psi-done{background:var(--gl);color:var(--g)}
+.psi-wait{background:var(--bg);color:var(--t3);animation:spin-slow 3s linear infinite}
+@keyframes spin-slow{to{transform:rotate(360deg)}}
+.psi-pending{background:var(--bg);color:var(--t3)}
+.proc-step-text{font-size:13px;font-weight:600;color:var(--t1)}
+.proc-step-sub{font-size:11px;color:var(--t3);margin-top:1px}
+
+/* How section refonte */
+.how-steps{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.hw-step{display:flex;align-items:flex-start;gap:16px;padding:20px;background:#fff;border-radius:var(--r);border:1px solid var(--bd);position:relative}
+.hw-step-num{width:40px;height:40px;border-radius:50%;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Inter',sans-serif}
+.hw-connector{position:absolute;left:38px;bottom:-12px;width:2px;height:12px;background:var(--bd);z-index:1}
+.hw-step:last-child .hw-connector{display:none}
+.hw-title{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.hw-desc{font-size:13px;color:var(--t2);line-height:1.6}
+.hw-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;margin-top:6px;text-transform:uppercase;letter-spacing:.04em}
+
+/* Nav — sticky CTA bottom pour mobile */
+.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--bd);padding:12px 16px;z-index:150;box-shadow:0 -4px 16px rgba(0,0,0,.08)}
+.mobile-cta-bar.show{display:flex;gap:10px}
+.mobile-cta-bar .btn-hero-main{flex:1;height:48px;font-size:15px}
+.mobile-cta-bar .btn-hero-sec{height:48px;padding:0 16px;font-size:14px}
+
+/* Fiabilité badge */
+.reliability-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
+.rb-excellent{background:#F0FDF4;color:#16A34A;border:1px solid #BBF7D0}
+.rb-tresbon{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.rb-bon{background:#FFF4EC;color:#B35000;border:1px solid #FECBA1}
+
+/* Section "Nos artisans viennent de nous" */
+.origin-section{background:var(--t1);padding:52px 20px;position:relative;overflow:hidden}
+.origin-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,168,107,.05) 1px,transparent 1px);background-size:18px 18px}
+.origin-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.origin-tag{display:inline-block;background:rgba(0,168,107,.15);color:#4ADE80;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;border:1px solid rgba(0,168,107,.25)}
+.origin-h2{font-size:clamp(20px,4vw,28px);font-weight:800;color:#fff;letter-spacing:-.4px;line-height:1.2;margin-bottom:10px}
+.origin-sub{font-size:15px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:28px}
+.origin-cards{display:flex;flex-direction:column;gap:10px}
+.origin-card{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--rm);padding:16px;transition:all .2s}
+.origin-card:hover{background:rgba(0,168,107,.08);border-color:rgba(0,168,107,.2)}
+.origin-card-icon{width:38px;height:38px;border-radius:var(--rs);background:rgba(0,168,107,.15);border:1px solid rgba(0,168,107,.2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.origin-card-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
+.origin-card-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.5}
+
+@media(min-width:600px){
+  .hero-value-props{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .selection-grid{display:grid;grid-template-columns:1fr 1fr}
+  .how-steps{display:grid;grid-template-columns:1fr 1fr}
+  .hw-connector{display:none}
+  .origin-cards{display:grid;grid-template-columns:1fr 1fr}
+  .mobile-cta-bar{display:none!important}
+}
+@media(max-width:599px){
+  .mobile-cta-bar.show{display:flex}
+}
+
+</style>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  // ╔══════════════════════════════════════════════════════╗
+  // ║  CONFIGURATION EMAILJS — À remplir une seule fois   ║
+  // ║  Voir README ci-dessous pour les étapes             ║
+  // ╚══════════════════════════════════════════════════════╝
+  const EMAILJS_PUBLIC_KEY  = 'VOTRE_PUBLIC_KEY';   // ex: 'abc123XYZ'
+  const EMAILJS_SERVICE_ID  = 'VOTRE_SERVICE_ID';   // ex: 'service_xxxxxx'
+  const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE_ID';  // ex: 'template_xxxxxx'
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+</script>
+</head>
+<body>
+
+<!-- ═══════════════════ PAGE ACCUEIL ═══════════════════ -->
+<div id="pgHome" class="page on">
+  <nav class="nav">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo" onclick="goHome()">ArtiZango<div class="nav-logo-dot"></div></div>
+      <div class="nav-cert" style="display:none" id="navCertBadge">✓ Artisans évalués</div>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn nav-btn-ghost" onclick="goTo('pgArtisan')">Je suis artisan</button>
+      <button class="nav-btn nav-btn-primary" onclick="openDevisFor(null)">🤝 Être mis en relation</button>
+    </div>
+  </nav>
+
+  <!-- TRUST BANNER -->
+  <div class="trust-banner">
+    <div class="trust-banner-inner">
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Artisans évalués sur nos propres chantiers</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Réalisations : immeuble R+3 Anono, villas Bingerville</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Qualité contrôlée sur chaque chantier</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Prix juste estimé avant intervention</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Zéro mauvaise surprise</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Satisfaction garantie</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Artisans évalués sur nos propres chantiers</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Réalisations : immeuble R+3 Anono, villas Bingerville</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Qualité contrôlée sur chaque chantier</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Prix juste estimé avant intervention</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Zéro mauvaise surprise</div>
+      <div class="trust-banner-item"><div class="trust-banner-dot"></div>Satisfaction garantie</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-pill"><div class="hero-pill-dot"></div>Plateforme de confiance · Artisans évalués à Abidjan</div>
+      <h1 class="hero-h1">Trouvez un artisan<br><em>certifié et vérifié</em><br>à Abidjan</h1>
+      <p class="hero-sub">Chaque artisan est <strong>personnellement sélectionné et certifié</strong> par notre équipe. Moins de 5% des candidats sont acceptés sur la plateforme.</p>
+      <div class="hero-search">
+        <div class="hero-search-field">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="heroQ" placeholder="Quel artisan cherchez-vous ?" oninput="liveFilter()">
+        </div>
+        <div class="hero-search-field">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <select id="heroCommune" onchange="liveFilter()">
+            <option value="">Toutes les communes</option>
+            <option>Cocody</option><option>Plateau</option><option>Yopougon</option>
+            <option>Adjamé</option><option>Marcory</option><option>Treichville</option>
+            <option>Abobo</option><option>Koumassi</option>
+          </select>
+        </div>
+        <div class="hero-cta-row">
+          <button class="btn-hero-main" onclick="scrollToArtisans()">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Trouver un artisan
+          </button>
+          <button class="btn-hero-sec" onclick="goTo('pgArtisan')">Je suis artisan →</button>
+        </div>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">🏅 Évalué ArtiZango</div>
+        <div class="trust-item">🔍 Sélection rigoureuse</div>
+        <div class="trust-item">⚡ Intervention rapide</div>
+        <div class="trust-item">🛡️ Qualité contrôlée</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-band">
+    <div class="stats-grid">
+      <div class="stat-item fu"><div class="stat-n">100<span>%</span></div><div class="stat-l">Sélectionnés sur nos chantiers</div></div>
+      <div class="stat-item fu"><div class="stat-n">4.9<span>★</span></div><div class="stat-l">Satisfaction client</div></div>
+      <div class="stat-item fu"><div class="stat-n">24h<span></span></div><div class="stat-l">Réponse garantie</div></div>
+      <div class="stat-item fu"><div class="stat-n">0</div><div class="stat-l">Mauvaise surprise</div></div>
+    </div>
+  </div>
+
+  <!-- PROMISE BAR -->
+  <div class="promise-bar">
+    <div class="promise-bar-inner">
+      <div class="promise-item"><div class="promise-icon">🏗️</div>Évalués sur nos propres chantiers</div>
+      <div class="promise-item"><div class="promise-icon">💰</div>Prix estimé avant intervention</div>
+      <div class="promise-item"><div class="promise-icon">🛡️</div>Zéro mauvaise surprise</div>
+      <div class="promise-item"><div class="promise-icon">⚡</div>Réponse sous 24h</div>
+      <div class="promise-item"><div class="promise-icon">⭐</div>Qualité contrôlée</div>
+    </div>
+  </div>
+
+  <!-- CATÉGORIES -->
+  <section class="section" style="background:#fff">
+    <div class="section-inner">
+      <div class="fu"><div class="sec-tag">Nos spécialités</div><h2 class="sec-h2">Dans quel domaine avez-vous besoin d'aide ?</h2><p class="sec-sub">Sélectionnez votre besoin. ArtiZango vous propose les meilleurs artisans disponibles, évalués et sélectionnés par notre équipe.</p></div>
+      <div class="cats-grid" id="catsGrid">
+        <div class="cat fu" onclick="filterCat('Plombier')"><span class="cat-icon">🔧</span><div class="cat-name">Plomberie</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Électricien')"><span class="cat-icon">⚡</span><div class="cat-name">Électricité</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Climatisation')"><span class="cat-icon">❄️</span><div class="cat-name">Climatisation</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Menuisier')"><span class="cat-icon">🪵</span><div class="cat-name">Menuiserie</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Maçon')"><span class="cat-icon">🧱</span><div class="cat-name">Maçonnerie</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Peintre')"><span class="cat-icon">🎨</span><div class="cat-name">Peinture</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Mécanicien')"><span class="cat-icon">🔩</span><div class="cat-name">Mécanique</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Ménage')"><span class="cat-icon">🧹</span><div class="cat-name">Ménage</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Maître d'Œuvre')"><span class="cat-icon">📐</span><div class="cat-name">Maître d'Œuvre</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Achat Chine')"><span class="cat-icon">🌏</span><div class="cat-name">Achat en Chine</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Construction')"><span class="cat-icon">🏗️</span><div class="cat-name">Construction</div><div class="cat-verified">✓ Sélectionnés</div></div>
+        <div class="cat fu" onclick="filterCat('Autres')"><span class="cat-icon">➕</span><div class="cat-name">Autres</div><div class="cat-verified">Nous consulter</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTISANS -->
+  <section class="section" id="artisanSection">
+    <div class="section-inner">
+      <div class="fu"><div class="sec-tag">Sélection ArtiZango</div><h2 class="sec-h2" id="artisanSectionTitle">Nos artisans de confiance</h2><p class="sec-sub">Ces professionnels ont travaillé directement avec notre équipe. Nous connaissons leur qualité, leur sérieux et leur façon de travailler. Ce ne sont pas des inconnus — ce sont <strong>nos artisans</strong>.</p></div>
+      <div class="cards-grid" id="artisanGrid"></div>
+      <div id="noResult" style="display:none;text-align:center;padding:40px 0;color:var(--t3)"><div style="font-size:36px;margin-bottom:10px">🔍</div><p>Aucun artisan trouvé.<br>Essayez un autre métier ou commune.</p></div>
+    </div>
+  </section>
+
+  <!-- QUI SOMMES-NOUS -->
+  <section class="origin-section" id="quiSommesNous">
+    <div class="origin-inner">
+      <div class="origin-tag">Qui sommes-nous</div>
+      <h2 class="origin-h2">Un réseau né sur le terrain,<br>pas derrière un écran</h2>
+      <p class="origin-sub">ArtiZango est né d'une expérience terrain. Nos réalisations — un immeuble R+3 de 24 logements et boutiques à Anono, une villa de 250 m² à Bingerville, 8 maisons basses totalisant 500 m² à Bingerville, la poursuite d'un immeuble R+2 déjà en cours, 2 logements étudiants à Anono, et d'autres chantiers encore — nous ont permis de constituer un panel d'artisans aux compétences reconnues et éprouvées. <strong>Chaque artisan de notre réseau a été évalué et sélectionné directement sur l'un de ces chantiers.</strong></p>
+
+      <div style="background:rgba(0,168,107,.1);border:1px solid rgba(0,168,107,.25);border-radius:16px;padding:20px;margin-bottom:24px">
+        <div style="font-size:13px;font-weight:700;color:#4ADE80;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+          <span>🏗️</span> Nos réalisations — visibles sur demande
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+            <div style="font-size:20px;margin-bottom:6px">🏠</div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Construction de maisons</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Réalisations à Bingerville — maisons individuelles visitables sur rendez-vous.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+            <div style="font-size:20px;margin-bottom:6px">🏗️</div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Construction & Bâtiment</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Réalisations diverses en gros œuvre, second œuvre et finitions sur Abidjan.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+            <div style="font-size:20px;margin-bottom:6px">🔧</div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Reprise de malfaçons</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Correction de travaux mal réalisés — plomberie, électricité, maçonnerie, carrelage.</div>
+          </div>
+          <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,.08)">
+            <div style="font-size:20px;margin-bottom:6px">🚗</div>
+            <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">Réparation de véhicules</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.5">Entretien et réparation auto — mécaniciens sélectionnés sur nos propres véhicules.</div>
+          </div>
+        </div>
+        <button onclick="openDevisFor(null)" style="width:100%;margin-top:16px;height:44px;background:rgba(0,168,107,.25);border:1px solid rgba(0,168,107,.4);color:#4ADE80;font-size:13px;font-weight:700;border-radius:10px;cursor:pointer;font-family:inherit;transition:all .2s" onmouseover="this.style.background='rgba(0,168,107,.35)'" onmouseout="this.style.background='rgba(0,168,107,.25)'">
+          📸 Demander à voir nos réalisations
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VERIFY SECTION -->
+  <section class="verify-section">
+    <div class="verify-inner">
+      <div class="verify-tag">Notre différence</div>
+      <h2 class="verify-h2">Ces artisans, nous les avons<br>évalués sur nos propres chantiers</h2>
+      <p class="verify-sub">ArtiZango n'est pas un annuaire. Chaque artisan référencé a travaillé sur l'un de nos propres chantiers à Abidjan — construction, rénovation, reprise de malfaçons, mécanique. Nous les avons sélectionnés sur la base de ce que nous avons vu, pas sur ce qu'ils nous ont dit.</p>
+      <div class="verify-steps">
+        <div class="vstep fu">
+          <div class="vstep-icon">🏗️</div>
+          <div style="flex:1">
+            <div class="vstep-title">Évaluation sur nos propres chantiers</div>
+            <div class="vstep-desc">Chaque artisan a été évalué lors de travaux réels : immeuble R+3 à Anono, villas à Bingerville, maisons basses, logements étudiants, reprise de malfaçons. Nous les avons observés en conditions réelles de chantier.</div>
+          </div>
+          <div class="vstep-num">Étape 1</div>
+        </div>
+        <div class="vstep fu">
+          <div class="vstep-icon">📋</div>
+          <div style="flex:1">
+            <div class="vstep-title">Évaluation qualité stricte</div>
+            <div class="vstep-desc">À l'issue de chaque chantier commun, nous évaluons la qualité du travail, le respect des délais, la communication et le soin apporté.</div>
+          </div>
+          <div class="vstep-num">Étape 2</div>
+        </div>
+        <div class="vstep fu">
+          <div class="vstep-icon">🏅</div>
+          <div style="flex:1">
+            <div class="vstep-title">Sélection ArtiZango</div>
+            <div class="vstep-desc">Seuls les artisans dont le travail a été jugé satisfaisant sur nos chantiers sont référencés. La sélection est basée sur les résultats, pas sur des déclarations.</div>
+          </div>
+          <div class="vstep-num">Étape 3</div>
+        </div>
+        <div class="vstep fu">
+          <div class="vstep-icon">🔄</div>
+          <div style="flex:1">
+            <div class="vstep-title">Suivi après chaque mission</div>
+            <div class="vstep-desc">Nous collectons votre avis après chaque intervention. Un artisan dont la qualité baisse est retiré de la plateforme — sans exception.</div>
+          </div>
+          <div class="vstep-num">Étape 4</div>
+        </div>
+      </div>
+      <div class="verify-stats">
+        <div class="vstat"><div class="vstat-n">100%</div><div class="vstat-l">Évalués sur chantier</div></div>
+        <div class="vstat"><div class="vstat-n">4.9★</div><div class="vstat-l">Satisfaction client</div></div>
+        <div class="vstat"><div class="vstat-n">0</div><div class="vstat-l">Mauvaise surprise</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="section how-bg" id="howSection">
+    <div class="section-inner">
+      <div class="fu" style="text-align:center;margin-bottom:4px">
+        <div class="sec-tag">En 4 étapes simples</div>
+        <h2 class="sec-h2">Un service pensé pour votre tranquillité</h2>
+        <p class="sec-sub">Du premier clic à la fin des travaux — ArtiZango s'occupe de tout.</p>
+      </div>
+      <div class="how-steps">
+        <div class="hw-step fu">
+          <div class="hw-step-num sn1" style="width:40px;height:40px;font-size:15px">1</div>
+          <div class="hw-connector"></div>
+          <div>
+            <div class="hw-title">Décrivez votre besoin</div>
+            <div class="hw-desc">En 2 minutes, expliquez votre problème, votre commune et votre budget estimatif. Notre formulaire guidé vous aide à être précis.</div>
+            <div class="hw-tag" style="background:var(--gl);color:var(--gd)">Gratuit · 2 min</div>
+          </div>
+        </div>
+        <div class="hw-step fu">
+          <div class="hw-step-num sn2" style="width:40px;height:40px;font-size:15px">2</div>
+          <div class="hw-connector"></div>
+          <div>
+            <div class="hw-title">Nous analysons votre demande</div>
+            <div class="hw-desc">Notre équipe évalue votre besoin, estime le juste prix et sélectionne parmi nos artisans certifiés les 3 à 5 profils les plus adaptés.</div>
+            <div class="hw-tag" style="background:var(--orl);color:var(--ord)">Sous 24h</div>
+          </div>
+        </div>
+        <div class="hw-step fu">
+          <div class="hw-step-num sn3" style="width:40px;height:40px;font-size:15px">3</div>
+          <div class="hw-connector"></div>
+          <div>
+            <div class="hw-title">Vous choisissez votre artisan</div>
+            <div class="hw-desc">On vous présente les artisans disponibles avec leur profil, leur note, leur niveau de fiabilité et l'estimation de prix. Vous choisissez celui qui vous convient.</div>
+            <div class="hw-tag" style="background:#EFF6FF;color:#1D4ED8">Vous décidez</div>
+          </div>
+        </div>
+        <div class="hw-step fu">
+          <div class="hw-step-num" style="width:40px;height:40px;font-size:15px;background:#F0FDF4;color:#16A34A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">4</div>
+          <div>
+            <div class="hw-title">Mise en relation &amp; suivi</div>
+            <div class="hw-desc">ArtiZango coordonne la mise en relation, confirme la disponibilité de l'artisan et s'assure que l'intervention se passe bien. Vous n'avez rien à gérer.</div>
+            <div class="hw-tag" style="background:#F0FDF4;color:#16A34A">Suivi garanti</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section class="section" style="background:#fff">
+    <div class="section-inner">
+      <div class="fu"><div class="sec-tag">Ils nous font confiance</div><h2 class="sec-h2">Ce que disent nos clients</h2></div>
+      <div class="testi-grid">
+        <div class="testi fu">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Service impeccable ! J'ai eu un plombier chez moi le lendemain. Travail propre et prix honnête. Je recommande à 100%.</p>
+          <div class="testi-author"><div class="testi-av" style="background:var(--gl);color:var(--gd)">AK</div><div><div class="testi-name">Aya Kouamé</div><div class="testi-service">Plomberie · Cocody</div></div></div>
+        </div>
+        <div class="testi fu">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Électricien trouvé en moins de 24h. Très professionnel, l'équipe ArtiZango répond vite. Vraiment rassurant de passer par eux.</p>
+          <div class="testi-author"><div class="testi-av" style="background:var(--orl);color:var(--ord)">MT</div><div><div class="testi-name">Moussa Touré</div><div class="testi-service">Électricité · Plateau</div></div></div>
+        </div>
+        <div class="testi fu">
+          <div class="testi-stars">★★★★☆</div>
+          <p class="testi-text">Je ne savais pas trop, mais après avoir soumis ma demande j'ai été rappelée rapidement. Le maçon était sérieux et ponctuel.</p>
+          <div class="testi-author"><div class="testi-av" style="background:#EFF6FF;color:#1D4ED8">FD</div><div><div class="testi-name">Fatou Diallo</div><div class="testi-service">Maçonnerie · Yopougon</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-band">
+    <div class="cta-inner fu">
+      <div style="display:flex;justify-content:center;margin-bottom:16px"><div class="cert-seal"><span class="cert-seal-icon">🛡️</span>Service ArtiZango — Artisans évalués</div></div>
+      <h2 class="cta-h2">Prêt à trouver l'artisan<br>qu'il vous faut ?</h2>
+      <p class="cta-sub">Décrivez votre besoin en 2 minutes. Notre équipe s'occupe du reste — analyse, estimation du prix, sélection de l'artisan et mise en relation.</p>
+      <div class="cta-btns">
+        <button class="cta-btn1" onclick="openDevisFor(null)">🤝 Être mis en relation</button>
+        <button class="cta-btn2" onclick="goTo('pgArtisan')">Je suis artisan →</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div style="max-width:900px;margin:0 auto">
+      <div class="footer-logo">ArtiZango</div>
+      <div class="footer-tagline">La plateforme de confiance pour les artisans d'Abidjan</div>
+      <div class="footer-links">
+        <span class="footer-link" onclick="scrollToArtisans()">Trouver un artisan</span>
+        <span class="footer-link" onclick="openDevisFor(null)">Être mis en relation</span>
+        <span class="footer-link" onclick="goTo('pgArtisan')">Espace artisan</span>
+      </div>
+      <div class="footer-copy">© 2025 ArtiZango · Abidjan, Côte d'Ivoire · contact@artizango.ci</div>
+    </div>
+  </footer>
+  <!-- MOBILE CTA BAR -->
+  <div class="mobile-cta-bar" id="mobileCta">
+    <button class="btn-hero-main" onclick="startWizard()" style="flex:1;height:48px;font-size:15px">📋 Décrire mon besoin</button>
+  </div>
+</div>
+
+<!-- ═══════════════════ WIZARD — PARCOURS CLIENT ═══════════════════ -->
+<div id="pgWizard" class="subpage">
+  <nav class="sub-nav">
+    <button class="sub-back" id="wizardBack" onclick="wizardBack()">‹</button>
+    <span class="sub-title" id="wizardTitle">Décrire mon besoin</span>
+    <div style="width:36px"></div>
+  </nav>
+
+  <!-- Indicateur d'étapes -->
+  <div style="padding:16px 20px 0;background:#fff;border-bottom:1px solid var(--bd)">
+    <div class="wizard-step-indicator">
+      <div class="wsi-dot" id="wDot1">1</div>
+      <div class="wsi-line" id="wLine1"></div>
+      <div class="wsi-dot pending" id="wDot2">2</div>
+      <div class="wsi-line" id="wLine2"></div>
+      <div class="wsi-dot pending" id="wDot3">3</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--t3);font-weight:600;margin-top:6px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.04em">
+      <span>Besoin</span><span>Artisans</span><span>Confirmation</span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 — Formulaire besoin -->
+  <div id="wStep1" class="wizard-wrap">
+    <div style="margin-bottom:20px">
+      <h2 style="font-size:20px;font-weight:800;color:var(--t1);letter-spacing:-.3px;margin-bottom:6px">Décrivez votre besoin</h2>
+      <p style="font-size:14px;color:var(--t2);line-height:1.6">Notre équipe analysera votre demande et vous proposera l'artisan le plus adapté parmi nos professionnels certifiés.</p>
+    </div>
+    <form id="wizardForm1" onsubmit="wizardStep1Submit(event)">
+      <input type="hidden" name="artisan_id" id="wArtisanId" value="">
+      <input type="hidden" name="artisan_nom" id="wArtisanNom" value="">
+      <div class="f-group">
+        <label class="f-label">Type de service *</label>
+        <select class="f-input f-select" name="metier" id="wMetier" required>
+          <option value="">Choisir le type de travaux…</option>
+          <option>Plomberie</option><option>Électricité</option><option>Climatisation</option>
+          <option>Menuiserie</option><option>Maçonnerie</option><option>Peinture</option>
+          <option>Mécanique</option><option>Ménage</option>
+          <option>Maître d'Œuvre</option><option>Achat en Chine</option>
+          <option>Construction</option><option>Autres</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Décrivez votre problème *</label>
+        <textarea class="f-input f-textarea" name="description" required placeholder="Ex : Fuite sous l'évier de ma cuisine depuis 2 jours, eau qui coule lentement…" style="min-height:90px"></textarea>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Votre commune *</label>
+        <select class="f-input f-select" name="commune" required>
+          <option value="">Choisir votre commune…</option>
+          <option>Cocody</option><option>Plateau</option><option>Yopougon</option>
+          <option>Adjamé</option><option>Marcory</option><option>Treichville</option>
+          <option>Abobo</option><option>Koumassi</option><option>Port-Bouët</option><option>Bingerville</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Budget estimatif <span style="color:var(--t3);font-weight:400">(optionnel)</span></label>
+        <select class="f-input f-select" name="budget">
+          <option value="">Non défini</option>
+          <option>Moins de 25 000 XOF</option>
+          <option>25 000 – 100 000 XOF</option>
+          <option>100 000 – 300 000 XOF</option>
+          <option>Plus de 300 000 XOF</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Niveau d'urgence <span style="color:var(--t3);font-weight:400">(optionnel)</span></label>
+        <select class="f-input f-select" name="urgence">
+          <option value="">Pas d'urgence particulière</option>
+          <option>Urgent — aujourd'hui</option>
+          <option>Dans les 2-3 jours</option>
+          <option>Cette semaine</option>
+          <option>Ce mois-ci</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit">
+        Voir les artisans disponibles →
+      </button>
+    </form>
+  </div>
+
+  <!-- ÉTAPE 2 — Sélection artisan (3 à 5 max) -->
+  <div id="wStep2" style="display:none;flex:1;overflow-y:auto;padding:20px 18px 60px">
+    <div style="margin-bottom:20px">
+      <h2 style="font-size:18px;font-weight:800;color:var(--t1);letter-spacing:-.3px;margin-bottom:6px">Choisissez votre artisan</h2>
+      <p style="font-size:14px;color:var(--t2);line-height:1.6">Notre équipe a sélectionné ces <strong id="wSelCount">3</strong> artisans pour votre demande. Tous ont travaillé avec nous et sont disponibles dans votre zone.</p>
+      <div style="background:var(--gxl);border:1px solid rgba(0,168,107,.15);border-radius:var(--rm);padding:10px 14px;margin-top:12px;font-size:13px;color:var(--gd);display:flex;align-items:center;gap:8px">
+        <span>💰</span>
+        <span>Estimation de prix : <strong id="wPriceEstimate">sera communiquée par notre équipe</strong></span>
+      </div>
+    </div>
+    <div class="selection-grid" id="wSelectionGrid"></div>
+  </div>
+
+  <!-- ÉTAPE 3 — Confirmation + coordonnées client -->
+  <div id="wStep3" style="display:none;flex:1;overflow-y:auto;padding:20px 18px 60px">
+    <div style="margin-bottom:20px">
+      <div style="background:var(--gxl);border:1px solid rgba(0,168,107,.18);border-radius:var(--r);padding:16px;margin-bottom:20px;display:flex;align-items:center;gap:12px">
+        <div style="font-size:28px">🏅</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--gd)">Artisan choisi :</div>
+          <div style="font-size:16px;font-weight:800;color:var(--t1)" id="wChosenName">—</div>
+          <div style="font-size:12px;color:var(--t2)" id="wChosenTrade">—</div>
+        </div>
+      </div>
+      <h2 style="font-size:18px;font-weight:800;color:var(--t1);letter-spacing:-.3px;margin-bottom:6px">Vos coordonnées</h2>
+      <p style="font-size:14px;color:var(--t2);line-height:1.6">Pour finaliser la mise en relation, notre équipe a besoin de vous contacter.</p>
+    </div>
+    <form id="wizardForm3" onsubmit="wizardStep3Submit(event)">
+      <div class="f-group"><label class="f-label">Votre nom *</label><input class="f-input" type="text" name="nom" required placeholder="Ex : Kouamé Jean-Pierre"></div>
+      <div class="f-group"><label class="f-label">Téléphone *</label><input class="f-input" type="tel" name="tel" required placeholder="+225 07 XX XX XX"></div>
+      <div style="background:var(--bg);border-radius:var(--rm);padding:14px;margin-bottom:20px;font-size:13px;color:var(--t2);line-height:1.6;border:1px solid var(--bd)">
+        🔒 <strong>Vos données sont sécurisées.</strong> Votre numéro ne sera transmis qu'à l'artisan que vous avez choisi, après validation par notre équipe. Aucun démarchage.
+      </div>
+      <button type="submit" class="btn-submit">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="22 2 15 22 11 12 2 9 22 2"/></svg>
+        Confirmer la mise en relation
+      </button>
+    </form>
+  </div>
+
+  <!-- PROCESSING SCREEN -->
+  <div id="wProcessing" style="display:none;flex:1">
+    <div class="processing-wrap">
+      <div class="processing-anim">⚙️</div>
+      <h2 class="processing-h">Demande en cours de traitement</h2>
+      <p class="processing-sub">Notre équipe ArtiZango prend en charge votre demande. Voici ce qui se passe maintenant :</p>
+      <div class="processing-steps">
+        <div class="proc-step">
+          <div class="proc-step-icon psi-done">✓</div>
+          <div><div class="proc-step-text">Demande reçue</div><div class="proc-step-sub">Votre besoin est enregistré</div></div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-step-icon psi-wait">⏳</div>
+          <div><div class="proc-step-text">Analyse en cours</div><div class="proc-step-sub">Notre équipe valide votre demande</div></div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-step-icon psi-pending">📞</div>
+          <div><div class="proc-step-text">Contact artisan</div><div class="proc-step-sub">Confirmation de disponibilité</div></div>
+        </div>
+        <div class="proc-step">
+          <div class="proc-step-icon psi-pending">🤝</div>
+          <div><div class="proc-step-text">Mise en relation</div><div class="proc-step-sub">L'artisan vous rappelle sous 24h</div></div>
+        </div>
+      </div>
+      <div style="margin-top:24px;padding:18px;background:#fff;border-radius:var(--r);border:1px solid var(--bd);text-align:center;max-width:320px;width:100%">
+        <div style="font-size:22px;margin-bottom:8px">✅</div>
+        <div style="font-size:15px;font-weight:700;color:var(--t1);margin-bottom:6px">Votre demande a bien été transmise</div>
+        <div style="font-size:13px;color:var(--t2);line-height:1.6">Un conseiller <strong>ArtiZango</strong> vous contactera sous <strong>24 heures</strong> pour confirmer la mise en relation avec votre artisan.</div>
+      </div>
+      <button class="btn-choose" onclick="goHome()" style="max-width:280px;margin-top:20px">← Retour à l'accueil</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════ FICHE ARTISAN ═══════════════════ -->
+<div id="pgProfile" class="subpage">
+  <nav class="sub-nav">
+    <button class="sub-back" onclick="goHome()">‹</button>
+    <span class="sub-title">Profil artisan</span>
+  </nav>
+  <div class="profile-cover"><div class="profile-cover-grad"></div><div class="profile-cover-dots"></div></div>
+  <div class="profile-section">
+    <div class="profile-av-row">
+      <div class="profile-av" id="pAv" style="background:#E8F8F2;color:#007A4D">KB</div>
+      <div>
+        <div class="profile-name" id="pName">—</div>
+        <div class="profile-trade" id="pTrade">—</div>
+      </div>
+    </div>
+    <div class="badges" id="pBadges"></div>
+    <div class="profile-rating">
+      <span class="profile-stars" id="pStars">★★★★★</span>
+      <span class="profile-score" id="pScore">4.8</span>
+      <span class="profile-count" id="pCount">(0 avis)</span>
+    </div>
+  </div>
+  <div style="padding:0 18px 0;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch">
+    <div class="profile-label">À propos</div>
+    <p class="profile-desc" id="pDesc">—</p>
+    <div class="profile-label">Informations</div>
+    <div class="info-tile"><span class="info-tile-icon">📍</span><span id="pZone">—</span></div>
+    <div class="info-tile"><span class="info-tile-icon">🕐</span><span id="pDispo" style="color:var(--g)">Disponible</span></div>
+    <div class="info-tile"><span class="info-tile-icon">🏅</span><span id="pExp">—</span></div>
+
+    <!-- CERT BLOCK -->
+    <div class="profile-cert-block">
+      <div class="pcb-title">
+        <svg width="16" height="16" fill="none" stroke="#4ADE80" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Artisan évalué &amp; sélectionné par ArtiZango
+      </div>
+      <div class="pcb-item"><div class="pcb-check">✓</div><div class="pcb-text">A travaillé sur nos propres chantiers</div></div>
+      <div class="pcb-item"><div class="pcb-check">✓</div><div class="pcb-text">Compétences vérifiées sur chantier réel</div></div>
+      <div class="pcb-item"><div class="pcb-check">✓</div><div class="pcb-text">Prix juste estimé avant toute intervention</div></div>
+      <div class="pcb-item"><div class="pcb-check">✓</div><div class="pcb-text">Suivi post-intervention garanti</div></div>
+    </div>
+
+    <!-- PAS DE CONTACT DIRECT -->
+    <div class="profile-cta-box">
+      <p>✅ <strong>Cet artisan a été évalué et sélectionné par ArtiZango.</strong> Pour être mis en relation, cliquez ci-dessous. Notre équipe organise tout et vous rappelle sous 24h.</p>
+      <button class="btn-devis-lg" id="pDevisBtn" style="background:linear-gradient(135deg,var(--g),var(--gd))">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Choisir cet artisan
+      </button>
+    </div>
+
+    <div class="profile-label" id="pReviewsTitle">Avis clients</div>
+    <div id="pReviews"></div>
+    <div style="height:24px"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FORMULAIRE DEVIS ═══════════════════ -->
+<div id="pgDevis" class="subpage">
+  <nav class="sub-nav">
+    <button class="sub-back" id="devisBack" onclick="goHome()">‹</button>
+    <span class="sub-title">Mise en relation</span>
+  </nav>
+  <div class="form-wrap">
+    <div id="devisFormSection">
+      <div class="form-trust-strip">
+        <div class="fts-item">🏅 Artisans certifiés</div>
+        <div class="fts-item">🔒 Données sécurisées</div>
+        <div class="fts-item">⚡ Réponse sous 24h</div>
+        <div class="fts-item">🆓 Gratuit pour vous</div>
+      </div>
+      <div class="form-intro">
+        <div class="form-intro-title">🤝 Mise en relation avec un artisan certifié</div>
+        <div class="form-intro-sub">Décrivez votre besoin. Notre équipe sélectionne pour vous le meilleur artisan certifié de votre zone et vous met en relation sous 24h. Aucun artisan non vérifié ne vous sera proposé.</div>
+      </div>
+      <div id="artisanTarget" style="display:none;background:#fff;border:1.5px solid var(--g);border-radius:var(--rm);padding:12px 14px;margin-bottom:18px;display:none;align-items:center;gap:10px">
+        <div style="font-size:20px">👤</div>
+        <div><div style="font-size:13px;font-weight:700;color:var(--gd)" id="artisanTargetName"></div><div style="font-size:12px;color:var(--t2)">Votre demande lui sera transmise en priorité</div></div>
+      </div>
+      <form id="devisForm" onsubmit="submitDevis(event)">
+        <input type="hidden" name="artisan_id" id="devisArtisanId" value="">
+        <input type="hidden" name="artisan_nom" id="devisArtisanNom" value="">
+        <div class="f-group"><label class="f-label">Votre nom *</label><input class="f-input" type="text" name="nom" required placeholder="Ex : Kouamé Jean-Pierre"></div>
+        <div class="f-group"><label class="f-label">Téléphone *</label><input class="f-input" type="tel" name="tel" required placeholder="+225 07 XX XX XX"></div>
+        <div class="f-group"><label class="f-label">Commune *</label>
+          <select class="f-input f-select" name="commune" required>
+            <option value="">Choisir votre commune…</option>
+            <option>Cocody</option><option>Plateau</option><option>Yopougon</option>
+            <option>Adjamé</option><option>Marcory</option><option>Treichville</option>
+            <option>Abobo</option><option>Koumassi</option><option>Port-Bouët</option>
+            <option>Bingerville</option>
+          </select>
+        </div>
+        <div class="f-group"><label class="f-label">Type de travaux *</label>
+          <select class="f-input f-select" name="metier" id="devisMetier" required>
+            <option value="">Choisir le type de travaux…</option>
+            <option>Plombier</option><option>Électricien</option><option>Climatisation</option>
+            <option>Menuisier</option><option>Maçon</option><option>Peintre</option>
+            <option>Mécanique</option><option>Ménage</option>
+          <option>Maître d'Œuvre</option><option>Achat en Chine</option>
+          <option>Construction</option><option>Autres</option>
+          </select>
+        </div>
+        <div class="f-group"><label class="f-label">Budget estimatif</label>
+          <select class="f-input f-select" name="budget">
+            <option value="">Non défini</option>
+            <option>Moins de 25 000 XOF</option>
+            <option>25 000 – 100 000 XOF</option>
+            <option>100 000 – 300 000 XOF</option>
+            <option>Plus de 300 000 XOF</option>
+          </select>
+        </div>
+        <div class="f-group"><label class="f-label">Décrivez votre besoin *</label><textarea class="f-input f-textarea" name="description" required placeholder="Expliquez en quelques mots vos travaux, l'urgence, vos contraintes…"></textarea></div>
+        <button type="submit" class="btn-submit">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="22 2 15 22 11 12 2 9 22 2"/></svg>
+          Recevoir des devis
+        </button>
+      </form>
+    </div>
+    <div id="devisSuccess" style="display:none">
+      <div class="success-box">
+        <div class="success-icon">🎉</div>
+        <h2 class="success-h">Votre demande a bien été transmise !</h2>
+        <p class="success-p" style="margin-bottom:16px">Merci <strong id="successName"></strong>, notre équipe a bien reçu votre demande. Un conseiller vous contactera sous <strong>24 heures</strong> pour vous mettre en relation avec le meilleur artisan disponible dans votre zone.</p>
+        <div style="background:var(--gxl);border-radius:var(--rm);padding:14px;text-align:left;margin-top:8px">
+          <div style="font-size:13px;font-weight:700;color:var(--gd);margin-bottom:6px">Ce qui se passe maintenant :</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.8">
+            📋 Votre demande est enregistrée<br>
+            🔍 Nous sélectionnons le meilleur artisan<br>
+            📞 Il vous rappelle sous 24h
+          </div>
+        </div>
+      </div>
+      <button class="btn-devis-lg" onclick="goHome()" style="margin-top:16px">← Retour à l'accueil</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ ESPACE ARTISAN ═══════════════════ -->
+<div id="pgArtisan" class="subpage">
+  <nav class="sub-nav">
+    <button class="sub-back" onclick="goHome()">‹</button>
+    <span class="sub-title">Rejoindre le réseau</span>
+  </nav>
+  <div style="padding:20px 18px 60px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch">
+
+    <!-- Hero artisan -->
+    <div style="background:linear-gradient(135deg,var(--t1),#0F2A1A);border-radius:var(--r);padding:24px;margin-bottom:24px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,168,107,.06) 1px,transparent 1px);background-size:18px 18px"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-size:11px;font-weight:700;color:#4ADE80;background:rgba(0,168,107,.2);display:inline-block;padding:3px 10px;border-radius:20px;margin-bottom:12px;border:1px solid rgba(0,168,107,.3);text-transform:uppercase;letter-spacing:.06em">Réseau ArtiZango</div>
+        <h2 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.3px;line-height:1.2;margin-bottom:10px">Vous êtes artisan à Abidjan ?</h2>
+        <p style="font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:0">Rejoignez un réseau sélectif de professionnels certifiés. Nous évaluons chaque candidat sur la qualité de ses réalisations — pas sur un CV.</p>
+      </div>
+    </div>
+
+    <!-- Ce que ça n'est PAS -->
+    <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:var(--rm);padding:16px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start">
+      <div style="font-size:22px;flex-shrink:0">🚫</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#991B1B;margin-bottom:4px">Ce n'est pas une place de marché</div>
+        <div style="font-size:13px;color:#7F1D1D;line-height:1.6">Nous ne vendons pas de contacts. Nous ne proposons pas d'abonnements. ArtiZango est un réseau fermé — on vous contacte si votre profil correspond à nos critères de qualité.</div>
+      </div>
+    </div>
+
+    <!-- Comment ça marche -->
+    <div style="font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">Comment ça fonctionne</div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--rm);padding:16px;display:flex;gap:14px;align-items:flex-start">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gl);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0">1</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px">Vous déposez votre candidature</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.55">Remplissez le formulaire et partagez vos coordonnées. Décrivez vos compétences et vos réalisations passées.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--rm);padding:16px;display:flex;gap:14px;align-items:flex-start">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--orl);color:var(--ord);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0">2</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px">Notre équipe vous contacte</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.55">Nous vous appelons pour en savoir plus sur votre parcours et vos réalisations. Un échange simple, sans engagement.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--rm);padding:16px;display:flex;gap:14px;align-items:flex-start">
+        <div style="width:36px;height:36px;border-radius:50%;background:#EFF6FF;color:#1D4ED8;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0">3</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px">Nous visitons vos réalisations</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.55">Si votre profil est prometteur, nous organisons une visite de vos chantiers ou travaux passés. C'est sur cette base que la décision est prise.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:var(--rm);padding:16px;display:flex;gap:14px;align-items:flex-start">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gl);color:var(--gd);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0">4</div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px">Intégration au réseau si validé</div>
+          <div style="font-size:13px;color:var(--t2);line-height:1.55">Si votre niveau de qualité correspond à nos standards, vous êtes intégré au réseau ArtiZango et commencez à recevoir des mises en relation.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ce qu'on attend -->
+    <div style="font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">Ce que nous recherchons</div>
+    <div style="background:var(--gxl);border:1px solid rgba(0,168,107,.18);border-radius:var(--rm);padding:16px;margin-bottom:24px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t1)">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gl);border:1px solid rgba(0,168,107,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g);flex-shrink:0">✓</div>
+          Des réalisations concrètes et vérifiables
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t1)">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gl);border:1px solid rgba(0,168,107,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g);flex-shrink:0">✓</div>
+          Un travail soigné et des délais respectés
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t1)">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gl);border:1px solid rgba(0,168,107,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g);flex-shrink:0">✓</div>
+          Un bon rapport avec les clients
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t1)">
+          <div style="width:22px;height:22px;border-radius:50%;background:var(--gl);border:1px solid rgba(0,168,107,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--g);flex-shrink:0">✓</div>
+          Une disponibilité réelle et une réactivité sérieuse
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA candidature -->
+    <button class="btn-devis-lg" onclick="goTo('pgInscription')" style="width:100%;margin-bottom:12px">
+      Déposer ma candidature
+    </button>
+    <p style="text-align:center;font-size:12px;color:var(--t3);line-height:1.6">Candidature gratuite · Aucun engagement · Notre équipe vous répond sous 48h</p>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ CANDIDATURE ARTISAN ═══════════════════ -->
+<div id="pgInscription" class="subpage">
+  <nav class="sub-nav">
+    <button class="sub-back" onclick="goTo('pgArtisan')">‹</button>
+    <span class="sub-title">Candidature artisan</span>
+  </nav>
+  <div class="form-wrap">
+    <div class="form-intro">
+      <div class="form-intro-title">📋 Déposez votre candidature</div>
+      <div class="form-intro-sub">Partagez vos informations et vos réalisations. Notre équipe vous contactera sous 48h pour échanger sur votre parcours. L'intégration au réseau est conditionnée à l'évaluation de la qualité de votre travail.</div>
+    </div>
+    <form id="inscriptionForm" onsubmit="submitInscription(event)">
+      <div class="f-group">
+        <label class="f-label">Nom / Entreprise *</label>
+        <input class="f-input" type="text" name="nom" required placeholder="Ex: Konan Brou ou Plomberie Kouassi">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Spécialité *</label>
+        <select class="f-input f-select" name="metier" required>
+          <option value="">Choisir votre domaine…</option>
+          <option>Plomberie</option><option>Électricité</option><option>Climatisation</option>
+          <option>Menuiserie</option><option>Maçonnerie</option><option>Peinture</option>
+          <option>Mécanique</option><option>Ménage</option>
+          <option>Maître d'Œuvre</option><option>Construction</option><option>Autres</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Téléphone *</label>
+        <input class="f-input" type="tel" name="tel" required placeholder="+225 07 XX XX XX">
+      </div>
+      <div class="f-group">
+        <label class="f-label">WhatsApp</label>
+        <input class="f-input" type="tel" name="whatsapp" placeholder="+225 07 XX XX XX (si différent)">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Commune principale *</label>
+        <select class="f-input f-select" name="commune" required>
+          <option value="">Choisir…</option>
+          <option>Cocody</option><option>Plateau</option><option>Yopougon</option>
+          <option>Adjamé</option><option>Marcory</option><option>Treichville</option>
+          <option>Abobo</option><option>Koumassi</option><option>Bingerville</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Années d'expérience *</label>
+        <input class="f-input" type="number" name="experience" required min="1" placeholder="Ex: 8">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Décrivez vos réalisations *</label>
+        <textarea class="f-input f-textarea" name="description" required rows="4"
+          placeholder="Décrivez vos chantiers passés, le type de travaux réalisés, vos références clients…"></textarea>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Avez-vous des photos de vos réalisations ?</label>
+        <select class="f-input f-select" name="photos">
+          <option value="">Choisir…</option>
+          <option>Oui — je peux les partager par WhatsApp</option>
+          <option>Oui — chantiers visitables sur place</option>
+          <option>Non — pas encore</option>
+        </select>
+      </div>
+      <div style="background:var(--bg);border:1px solid var(--bd);border-radius:var(--rm);padding:14px;margin-bottom:20px;font-size:13px;color:var(--t2);line-height:1.6">
+        🔒 <strong>Vos informations restent confidentielles.</strong> Elles ne seront jamais publiées sur le site ni partagées sans votre accord. Elles servent uniquement à notre équipe pour vous évaluer.
+      </div>
+      <button type="submit" class="btn-submit">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="22 2 15 22 11 12 2 9 22 2"/></svg>
+        Envoyer ma candidature
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═══════════════════════════════════════
+   DATA
+═══════════════════════════════════════ */
+const ARTISANS=[
+  {id:1,nom:"Konan Brou",metier:"Menuisier",commune:"Cocody",note:4.8,avis:23,dispo:true,exp:"8 ans",av:"KB",bg:"#E6F1FB",cl:"#0C447C",bar:"#0C447C",desc:"Spécialiste portes, fenêtres et placards sur mesure. Travail soigné et devis rapide.",tags:["Portes","Fenêtres","Placards","Parquet"],reviews:[{a:"Aya K.",n:5,d:"Jan 2025",t:"Très professionnel, a terminé en avance !"},{a:"Marcel D.",n:5,d:"Déc 2024",t:"Travail impeccable. Prix raisonnable."},{a:"Fatoumata S.",n:4,d:"Nov 2024",t:"Résultat vraiment top."}]},
+  {id:2,nom:"Diallo Électricité",metier:"Électricien",commune:"Cocody",note:4.6,avis:41,dispo:true,exp:"12 ans",av:"DE",bg:"#FFF3E0",cl:"#B35000",bar:"#B35000",desc:"Installations électriques, dépannage, tableaux électriques. Agréé SOGEPE. Intervention rapide.",tags:["Installation","Dépannage","Tableau","Clim"],reviews:[{a:"Ibrahim T.",n:5,d:"Fév 2025",t:"Intervention en 2h. Très efficace."},{a:"Corinne A.",n:4,d:"Jan 2025",t:"Bon travail, tarif honnête."}]},
+  {id:3,nom:"Yao Plomberie",metier:"Plombier",commune:"Plateau",note:4.3,avis:17,dispo:false,exp:"5 ans",av:"YP",bg:"#E1F5EE",cl:"#085041",bar:"#065F46",desc:"Plomberie générale, réparation fuites, sanitaires. Devis gratuit sur place.",tags:["Fuites","Sanitaires","Robinetterie"],reviews:[{a:"Sophie N.",n:4,d:"Jan 2025",t:"Rapide et propre."},{a:"Amed B.",n:5,d:"Nov 2024",t:"Parfait."}]},
+  {id:4,nom:"Ouédraogo Peinture",metier:"Peintre",commune:"Cocody",note:4.9,avis:8,dispo:true,exp:"10 ans",av:"OP",bg:"#FCE4EC",cl:"#880E4F",bar:"#9D174D",desc:"Peinture intérieure et extérieure. Enduit, ravalement de façade, décoration.",tags:["Intérieur","Extérieur","Enduit","Déco"],reviews:[{a:"Patrick L.",n:5,d:"Fév 2025",t:"Appartement méconnaissable !"},{a:"Mariama D.",n:5,d:"Jan 2025",t:"Minutieux, à l'heure."}]},
+  {id:5,nom:"Traoré Construction",metier:"Maçon",commune:"Yopougon",note:4.1,avis:12,dispo:true,exp:"15 ans",av:"TC",bg:"#F1EFE8",cl:"#374151",bar:"#374151",desc:"Gros œuvre, rénovation, carrelage, terrasse. 15 ans d'expérience.",tags:["Gros œuvre","Carrelage","Terrasse"],reviews:[{a:"Hervé K.",n:4,d:"Déc 2024",t:"Bonne qualité, respecte les délais."}]},
+  {id:6,nom:"Assi Carrelage",metier:"Carreleur",commune:"Marcory",note:4.7,avis:19,dispo:true,exp:"7 ans",av:"AC",bg:"#EAF3DE",cl:"#27500A",bar:"#14532D",desc:"Pose carrelage sol et mur, faïence, mosaïque. Finitions soignées.",tags:["Sol","Mur","Faïence"],reviews:[{a:"Alexis M.",n:5,d:"Jan 2025",t:"Salle de bain magnifique."},{a:"Binta S.",n:5,d:"Déc 2024",t:"Professionnelle."}]}
+];
+
+/* demandes stockées en mémoire (en prod → base de données) */
+let DEMANDES=[];
+let CURRENT_ARTISAN=null;
+let CURRENT_FILTER={q:'',commune:'',metier:''};
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════ */
+function goHome(){
+  document.querySelectorAll('.page,.subpage').forEach(p=>{p.classList.remove('on');});
+  document.getElementById('pgHome').classList.add('on');
+  window.scrollTo(0,0);
+}
+function goTo(id){
+  document.querySelectorAll('.page,.subpage').forEach(p=>p.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+
+  window.scrollTo(0,0);
+}
+
+/* ═══════════════════════════════════════
+   WIZARD
+═══════════════════════════════════════ */
+let WIZARD_DATA={};
+
+function startWizard(metier){
+  WIZARD_DATA={};
+  // reset form
+  document.getElementById('wizardForm1').reset();
+  if(metier){
+    // map category names to select values
+    const map={'Plomberie':'Plomberie','Électricité':'Électricité','Climatisation':'Climatisation',
+      'Menuiserie':'Menuiserie','Maçonnerie':'Maçonnerie','Peinture':'Peinture',
+      'Mécanique':'Mécanique','Ménage':'Ménage',
+      'Maître d\'Œuvre':'Maître d\'Œuvre','Achat Chine':'Achat en Chine',
+      'Construction':'Construction','Autres':'Autres'};
+    const sel=document.getElementById('wMetier');
+    sel.value=map[metier]||metier;
+  }
+  showWizardStep(1);
+  goTo('pgWizard');
+}
+
+function showWizardStep(n){
+  document.getElementById('wStep1').style.display=n===1?'block':'none';
+  document.getElementById('wStep2').style.display=n===2?'block':'none';
+  document.getElementById('wStep3').style.display=n===3?'block':'none';
+  document.getElementById('wProcessing').style.display=n===4?'flex':'none';
+  // Update indicator
+  [1,2,3].forEach(i=>{
+    const dot=document.getElementById('wDot'+i);
+    dot.className='wsi-dot '+(i<n?'done':i===n?'active':'pending');
+  });
+  [1,2].forEach(i=>{
+    const line=document.getElementById('wLine'+i);
+    if(line) line.className='wsi-line '+(i<n?'done':'');
+  });
+  // Title
+  const titles={1:'Décrire mon besoin',2:'Choisir un artisan',3:'Vos coordonnées',4:'En cours…'};
+  document.getElementById('wizardTitle').textContent=titles[n]||'';
+}
+
+function wizardBack(){
+  // Determine current step
+  const s1=document.getElementById('wStep1').style.display;
+  const s2=document.getElementById('wStep2').style.display;
+  const s3=document.getElementById('wStep3').style.display;
+  const s4=document.getElementById('wProcessing').style.display;
+  if(s4==='flex') return; // can't go back from processing
+  if(s3==='block'){showWizardStep(2);return;}
+  if(s2==='block'){showWizardStep(1);return;}
+  goHome();
+}
+
+function wizardStep1Submit(e){
+  e.preventDefault();
+  const data=Object.fromEntries(new FormData(e.target));
+  WIZARD_DATA={...WIZARD_DATA,...data};
+  // Build selection — filter artisans by metier or show all (max 5)
+  const metier=data.metier;
+  let sel=ARTISANS.filter(a=>a.metier.toLowerCase().includes(metier.toLowerCase().replace('ie','')
+    .replace('ité','icien').replace('erie','ier')) || 
+    metier===a.metier || metier==='Autre');
+  if(!sel.length) sel=ARTISANS;
+  sel=sel.slice(0,5);
+  document.getElementById('wSelCount').textContent=sel.length;
+  // Price estimate
+  const priceMap={
+    'Plomberie':'25 000 – 80 000 XOF',
+    'Électricité':'30 000 – 150 000 XOF',
+    'Climatisation':'50 000 – 200 000 XOF',
+    'Menuiserie':'40 000 – 250 000 XOF',
+    'Maçonnerie':'80 000 – 400 000 XOF',
+    'Peinture':'30 000 – 150 000 XOF',
+    'Mécanique':'20 000 – 150 000 XOF',
+    'Ménage':'10 000 – 30 000 XOF',
+    'Maître d\'Œuvre':'selon projet',
+    'Achat en Chine':'selon commande',
+    'Construction':'sur devis',
+    'Autres':'nous consulter',
+  };
+  document.getElementById('wPriceEstimate').textContent=priceMap[metier]||'selon devis';
+  renderSelectionGrid(sel);
+  showWizardStep(2);
+}
+
+function renderSelectionGrid(list){
+  const grid=document.getElementById('wSelectionGrid');
+  const rel={4.9:96,4.8:95,4.7:92,4.6:88,4.3:82,4.1:76};
+  grid.innerHTML=list.map(a=>`
+    <div class="sel-card" id="selCard_${a.id}">
+      <div class="sel-card-top">
+        <div class="sel-av" style="background:${a.bg};color:${a.cl}">${a.av}</div>
+        <div class="sel-info">
+          <div class="sel-name">${a.nom}</div>
+          <div class="sel-trade">${a.metier}</div>
+          <div class="sel-zone">📍 ${a.commune}</div>
+          <div class="sel-badges">
+            <span class="badge b-verified" style="font-size:10px">✓ Évalué ArtiZango</span>
+            ${a.dispo?'<span class="badge b-reactive" style="font-size:10px">⚡ Disponible</span>':''}
+          </div>
+        </div>
+      </div>
+      <div class="sel-rating">
+        ${starsHtml(a.note)}
+        <span class="sel-score">${a.note}</span>
+        <span class="sel-reviews">(${a.avis} avis)</span>
+        <span class="reliability-badge ${a.note>=4.7?'rb-excellent':a.note>=4.3?'rb-tresbon':'rb-bon'}" style="margin-left:auto">${a.note>=4.7?'Excellent':a.note>=4.3?'Très bon':'Bon'}</span>
+      </div>
+      <div class="reliability-bar">
+        <div class="rb-label"><span>Fiabilité ArtiZango</span><span style="color:${a.note>=4.7?'#16A34A':a.note>=4.3?'#1D4ED8':'#B35000'}">${rel[a.note]||80}%</span></div>
+        <div class="rb-track"><div class="rb-fill" style="width:${rel[a.note]||80}%"></div></div>
+      </div>
+      <div class="sel-spec">${a.desc}</div>
+      <button class="btn-choose" onclick="selectArtisan(${a.id},'${a.nom}','${a.metier}')">
+        ✓ Choisir ${a.nom.split(' ')[0]}
+      </button>
+    </div>`).join('');
+}
+
+function selectArtisan(id,nom,trade){
+  WIZARD_DATA.artisan_id=id;
+  WIZARD_DATA.artisan_nom=nom;
+  WIZARD_DATA.artisan_trade=trade;
+  document.getElementById('wChosenName').textContent=nom;
+  document.getElementById('wChosenTrade').textContent=trade;
+  showWizardStep(3);
+}
+
+function wizardStep3Submit(e){
+  e.preventDefault();
+  const data=Object.fromEntries(new FormData(e.target));
+  const fullData={...WIZARD_DATA,...data,
+    id:Date.now(),
+    date:new Date().toLocaleString('fr-FR'),
+    status:'new'
+  };
+  // Show processing
+  showWizardStep(4);
+  // Store locally
+  DEMANDES.unshift(fullData);
+  // Send email
+  const params={
+    to_email:'abideniromeo@gmail.com',
+    client_nom:fullData.nom,
+    client_tel:fullData.tel,
+    client_commune:fullData.commune,
+    metier:fullData.metier,
+    budget:fullData.budget||'Non précisé',
+    description:fullData.description,
+    urgence:fullData.urgence||'Non précisée',
+    artisan_nom:fullData.artisan_nom||'Non spécifié',
+    artisan_id:fullData.artisan_id||'—',
+    date_envoi:fullData.date,
+    reply_to:'noreply@artizango.ci'
+  };
+  emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,params)
+    .catch(err=>console.warn('EmailJS:',err));
+  toast('✅ Demande transmise !');
+}
+
+function chooseArtisan(id){
+  const a=ARTISANS.find(x=>x.id===id);
+  if(!a)return;
+  startWizard();
+  // pre-fill metier and jump to step 2
+  WIZARD_DATA.metier=a.metier;
+  const priceMap={
+    'Menuisier':'40 000 – 250 000 XOF','Électricien':'30 000 – 150 000 XOF',
+    'Plombier':'25 000 – 80 000 XOF','Peintre':'30 000 – 150 000 XOF',
+    'Maçon':'80 000 – 400 000 XOF','Carreleur':'40 000 – 180 000 XOF',
+    'Mécanicien':'20 000 – 150 000 XOF','Maître d\'Œuvre':'selon projet',
+    'Construction':'sur devis','Achat Chine':'selon commande'
+  };
+  document.getElementById('wPriceEstimate').textContent=priceMap[a.metier]||'selon devis';
+  document.getElementById('wSelCount').textContent='1';
+  renderSelectionGrid([a]);
+  showWizardStep(2);
+}
+
+/* ═══════════════════════════════════════
+   ARTISAN CARDS
+═══════════════════════════════════════ */
+function starsHtml(n,size=13){
+  return Array.from({length:5},(_,i)=>`<span style="color:${i<Math.round(n)?'#F59E0B':'#E2E8F0'};font-size:${size}px">★</span>`).join('');
+}
+
+function renderArtisans(list){
+  const grid=document.getElementById('artisanGrid');
+  const noRes=document.getElementById('noResult');
+  if(!list.length){grid.innerHTML='';noRes.style.display='block';return}
+  noRes.style.display='none';
+  grid.innerHTML=list.map(a=>`
+    <div class="a-card fu" onclick="openProfile(${a.id})">
+      <div class="cert-ribbon">✓ ÉVALUÉ</div>
+      <div class="a-card-top-bar" style="background:${a.bar}"></div>
+      <div class="a-card-body">
+        <div class="a-card-row">
+          <div class="a-initials" style="background:${a.bg};color:${a.cl}">${a.av}</div>
+          <div class="a-info">
+            <div class="a-name">${a.nom}</div>
+            <div class="a-trade">${a.metier} · ${a.commune}</div>
+            <div class="badges" style="margin-top:6px">
+              <span class="badge b-verified">🏅 Évalué ArtiZango</span>
+              ${a.note>=4.7?'<span class="badge b-top">🏆 Top artisan</span>':''}
+              ${a.dispo?'<span class="badge b-reactive">⚡ Disponible</span>':''}
+            </div>
+          </div>
+        </div>
+        <div class="a-rating" style="margin-top:10px">
+          ${starsHtml(a.note)}
+          <span class="a-score">${a.note}</span>
+          <span class="a-reviews">(${a.avis} avis)</span>
+          <span class="reliability-badge ${a.note>=4.7?'rb-excellent':a.note>=4.3?'rb-tresbon':'rb-bon'}" style="margin-left:auto">${a.note>=4.7?'Excellent':a.note>=4.3?'Très bon':'Bon'}</span>
+        </div>
+        <p class="a-desc">${a.desc}</p>
+        <div style="font-size:11px;color:var(--t3);margin-top:8px;display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+          <span style="color:var(--g)">✓</span> Sélectionné par ArtiZango &nbsp;·&nbsp;
+          <span style="color:var(--g)">✓</span> Qualité contrôlée &nbsp;·&nbsp;
+          <span style="color:var(--g)">✓</span> ${a.exp} d'expérience
+        </div>
+      </div>
+      <div class="a-card-footer">
+        <button class="btn-devis" onclick="event.stopPropagation();chooseArtisan(${a.id})" style="gap:6px">
+          ✓ Choisir cet artisan
+        </button>
+        <button class="btn-profile" onclick="event.stopPropagation();openProfile(${a.id})">Voir profil</button>
+      </div>
+    </div>`).join('');
+  initFadeUp();
+}
+
+function liveFilter(){
+  CURRENT_FILTER.q=document.getElementById('heroQ').value.toLowerCase();
+  CURRENT_FILTER.commune=document.getElementById('heroCommune').value;
+  applyFilters();
+}
+function filterCat(metier){
+  startWizard(metier);
+}
+function applyFilters(){
+  const {q,commune,metier}=CURRENT_FILTER;
+  const list=ARTISANS.filter(a=>{
+    if(metier&&a.metier!==metier)return false;
+    if(commune&&a.commune!==commune)return false;
+    if(q&&!`${a.nom} ${a.metier} ${a.commune}`.toLowerCase().includes(q))return false;
+    return true;
+  });
+  renderArtisans(list);
+}
+function scrollToArtisans(){
+  document.getElementById('artisanSection').scrollIntoView({behavior:'smooth'});
+}
+
+/* ═══════════════════════════════════════
+   PROFIL
+═══════════════════════════════════════ */
+function openProfile(id){
+  const a=ARTISANS.find(x=>x.id===id);if(!a)return;
+  CURRENT_ARTISAN=a;
+  document.getElementById('pAv').textContent=a.av;
+  document.getElementById('pAv').style.background=a.bg;
+  document.getElementById('pAv').style.color=a.cl;
+  document.getElementById('pName').textContent=a.nom;
+  document.getElementById('pTrade').textContent=a.metier+' · '+a.commune;
+  document.getElementById('pBadges').innerHTML=`
+    <span class="badge b-verified">✓ Vérifié</span>
+    ${a.note>=4.7?'<span class="badge b-top">🏆 Top artisan</span>':''}
+    ${a.dispo?'<span class="badge b-reactive">⚡ Réactif</span>':''}
+    <span class="badge" style="background:#EFF6FF;color:#1D4ED8">✓ Recommandé</span>`;
+  document.getElementById('pStars').innerHTML=starsHtml(a.note,16);
+  document.getElementById('pScore').textContent=a.note+'/5';
+  document.getElementById('pCount').textContent='('+a.avis+' avis)';
+  document.getElementById('pDesc').textContent=a.desc;
+  document.getElementById('pZone').textContent='Commune de '+a.commune+', Abidjan';
+  document.getElementById('pDispo').textContent=a.dispo?'Disponible maintenant':'Actuellement occupé';
+  document.getElementById('pDispo').style.color=a.dispo?'var(--g)':'var(--t3)';
+  document.getElementById('pExp').textContent=a.exp+" d'expérience";
+  document.getElementById('pDevisBtn').onclick=()=>chooseArtisan(a.id);
+  document.getElementById('pReviewsTitle').textContent='Avis clients ('+a.reviews.length+')';
+  document.getElementById('pReviews').innerHTML=a.reviews.map(r=>`
+    <div class="review-block">
+      <div class="review-top">
+        <div class="r-av">${r.a[0]}</div>
+        <span class="r-name">${r.a}</span>
+        <span class="r-stars">${'★'.repeat(r.n)}</span>
+        <span class="r-date">${r.d}</span>
+      </div>
+      <div class="r-text">${r.t}</div>
+    </div>`).join('');
+  goTo('pgProfile');
+}
+
+function openDevisFor(id){
+  const a=ARTISANS.find(x=>x.id===id);
+  if(a){
+    document.getElementById('devisMetier').value=a.metier;
+    document.getElementById('devisArtisanId').value=a.id;
+    document.getElementById('devisArtisanNom').value=a.nom;
+    const banner=document.getElementById('artisanTarget');
+    document.getElementById('artisanTargetName').textContent=a.nom+' · '+a.metier;
+    banner.style.display='flex';
+  } else {
+    document.getElementById('devisArtisanId').value='';
+    document.getElementById('devisArtisanNom').value='';
+    document.getElementById('artisanTarget').style.display='none';
+  }
+  goTo('pgDevis');
+  document.getElementById('devisFormSection').style.display='block';
+  document.getElementById('devisSuccess').style.display='none';
+}
+
+/* ═══════════════════════════════════════
+   DEVIS FORM
+═══════════════════════════════════════ */
+function submitDevis(e){
+  e.preventDefault();
+  const form=e.target;
+  const data=Object.fromEntries(new FormData(form));
+  data.id=Date.now();
+  data.date=new Date().toLocaleString('fr-FR');
+  data.status='new';
+
+  // Artisan target info
+  const artisanNom=document.getElementById('devisArtisanNom').value;
+  const artisanId=document.getElementById('devisArtisanId').value;
+
+  // Store locally
+  DEMANDES.unshift(data);
+
+  // Show loading state
+  const btn=form.querySelector('button[type="submit"]');
+  const origText=btn.innerHTML;
+  btn.innerHTML='⏳ Envoi en cours…';
+  btn.disabled=true;
+
+  // EmailJS send
+  const templateParams={
+    to_email:     'abideniromeo@gmail.com',
+    client_nom:   data.nom,
+    client_tel:   data.tel,
+    client_commune: data.commune,
+    metier:       data.metier,
+    budget:       data.budget||'Non précisé',
+    description:  data.description,
+    artisan_nom:  artisanNom||'Non spécifié',
+    artisan_id:   artisanId||'—',
+    date_envoi:   data.date,
+    reply_to:     'noreply@artizango.ci'
+  };
+
+  emailjs.send(
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,
+    templateParams
+  ).then(()=>{
+    showSuccess(data.nom);
+  }).catch(err=>{
+    console.warn('EmailJS error:', err);
+    // Fallback: still show success (don't block UX)
+    showSuccess(data.nom);
+  }).finally(()=>{
+    btn.innerHTML=origText;
+    btn.disabled=false;
+    form.reset();
+    document.getElementById('devisArtisanId').value='';
+    document.getElementById('devisArtisanNom').value='';
+    document.getElementById('artisanTarget').style.display='none';
+    renderOpps();
+  });
+}
+
+function showSuccess(nom){
+  document.getElementById('successName').textContent=nom.split(' ')[0];
+  document.getElementById('devisFormSection').style.display='none';
+  document.getElementById('devisSuccess').style.display='block';
+  toast('✅ Demande transmise avec succès !');
+}
+
+/* ═══════════════════════════════════════
+   INSCRIPTION ARTISAN
+═══════════════════════════════════════ */
+function submitInscription(e){
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(e.target));
+  const btn=e.target.querySelector('button[type="submit"]');
+  btn.innerHTML='⏳ Envoi en cours…';btn.disabled=true;
+  emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{
+    to_email:'abideniromeo@gmail.com',
+    type_demande:'CANDIDATURE ARTISAN',
+    client_nom:d.nom,
+    client_tel:d.tel,
+    client_commune:d.commune,
+    metier:d.metier,
+    budget:'—',
+    description:'Exp: '+d.experience+' ans\n\nRéalisations: '+d.description+'\n\nPhotos: '+(d.photos||'Non précisé')+'\nWhatsApp: '+(d.whatsapp||'identique'),
+    urgence:'Candidature artisan',
+    artisan_nom:'—',artisan_id:'—',
+    date_envoi:new Date().toLocaleString('fr-FR'),
+    reply_to:'noreply@artizango.ci'
+  }).catch(err=>console.warn('EmailJS:',err)).finally(()=>{
+    btn.innerHTML='✓ Envoyer ma candidature';btn.disabled=false;
+    e.target.reset();
+    const wrap=e.target.closest('.form-wrap');
+    wrap.innerHTML=`<div style="text-align:center;padding:48px 20px">
+      <div style="font-size:56px;margin-bottom:16px">✅</div>
+      <h2 style="font-size:20px;font-weight:800;color:var(--t1);margin-bottom:10px">Candidature envoyée !</h2>
+      <p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:24px;max-width:320px;margin-left:auto;margin-right:auto">
+        Merci <strong>${d.nom.split(' ')[0]}</strong>. Notre équipe vous contactera sous <strong>48 heures</strong>.
+      </p>
+      <div style="background:var(--gxl);border-radius:var(--rm);padding:16px;text-align:left;margin-bottom:24px;font-size:13px;color:var(--t2);line-height:1.7">
+        📞 Nous vous appellerons au <strong>${d.tel}</strong><br>
+        🔍 Nous évaluerons vos réalisations<br>
+        🤝 Si votre profil correspond, vous rejoignez le réseau
+      </div>
+      <button class="btn-devis-lg" onclick="goHome()" style="max-width:260px;margin:0 auto">← Retour à l'accueil</button>
+    </div>`;
+  });
+}
+
+/* ═══════════════════════════════════════
+   OPPORTUNITÉS ARTISAN
+═══════════════════════════════════════ */
+
+
+
+function metierIcon(m){
+  const icons={Plombier:'🔧',Plomberie:'🔧',Électricien:'⚡',Électricité:'⚡',Climatisation:'❄️',Menuisier:'🪵',Menuiserie:'🪵',Maçon:'🧱',Maçonnerie:'🧱',Peintre:'🎨',Peinture:'🎨',Mécanicien:'🔩',Mécanique:'🔩','Maître d\'Œuvre':'📐',Construction:'🏗️','Achat en Chine':'🌏',Ménage:'🧹',Autres:'➕'};
+  return icons[m]||'🔨';
+}
+
+/* ═══════════════════════════════════════
+   ACTIONS
+═══════════════════════════════════════ */
+function callArtisan(tel){
+  window.location.href='tel:'+tel.replace(/\s/g,'');
+}
+function whatsapp(num,nom){
+  const msg=encodeURIComponent('Bonjour '+nom+', j\'ai trouvé votre profil sur ArtiZango. Je souhaite un devis.');
+  window.open('https://wa.me/'+num+'?text='+msg,'_blank');
+}
+function copyText(text){
+  if(navigator.clipboard) navigator.clipboard.writeText(text).then(()=>toast('Copié !'));
+}
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ═══════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════ */
+function initFadeUp(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}
+    });
+  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.fu:not(.vis)').forEach(el=>obs.observe(el));
+}
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderArtisans(ARTISANS);
+  initFadeUp();
+  // Badge certifié dans la nav
+  const nb=document.getElementById('navCertBadge');
+  if(nb) nb.style.display='flex';
+  // Bouton CTA mobile — apparaît après scroll
+  const mobileCta=document.getElementById('mobileCta');
+  if(mobileCta){
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>300) mobileCta.classList.add('show');
+      else mobileCta.classList.remove('show');
+    },{passive:true});
+  }
+});
+
+</script>
+</body>
+</html>
