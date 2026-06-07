@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>ArtisanGo — Abidjan</title>
+<title>ArtiZango — Abidjan</title>
 <meta name="description" content="Trouvez un artisan qualifié près de chez vous à Abidjan">
 <meta name="theme-color" content="#1D9E75">
 <style>
@@ -105,7 +105,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 <div id="viewMain" class="view active">
   <div class="topbar">
     <div class="topbar-row">
-      <div class="brand">ArtisanGo</div>
+      <div class="brand">ArtiZango</div>
       <div class="loc-badge">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         <span id="locLabel">Localisation…</span>
@@ -314,7 +314,7 @@ const app=(()=>{
 
   function call(tel){window.location.href='tel:'+tel.replace(/\s/g,'')}
   function whatsapp(num,nom){
-    const msg=encodeURIComponent(`Bonjour ${nom}, j'ai trouvé votre profil sur ArtisanGo. Je souhaite un devis.`);
+    const msg=encodeURIComponent(`Bonjour ${nom}, j'ai trouvé votre profil sur ArtiZango. Je souhaite un devis.`);
     window.open(`https://wa.me/${num}?text=${msg}`,'_blank');
   }
   function copy(text){
@@ -325,14 +325,14 @@ const app=(()=>{
 
   function showAbout(){
     document.getElementById('detailBody').innerHTML=`
-      <h2 style="font-size:20px;font-weight:600;margin-bottom:12px">ArtisanGo</h2>
+      <h2 style="font-size:20px;font-weight:600;margin-bottom:12px">ArtiZango</h2>
       <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:12px">La plateforme qui met en relation les habitants d'Abidjan avec des artisans qualifiés de leur quartier.</p>
       <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px">Trouvez un menuisier, électricien, plombier, peintre ou maçon en quelques secondes, selon votre localisation et les avis de votre communauté.</p>
       <div class="section-label">Vous êtes artisan ?</div>
       <p style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:12px">Inscrivez-vous gratuitement pour apparaître dans les résultats.</p>
       <button class="btn-green" style="width:100%" onclick="app.showRegister()">👤 Créer mon profil artisan</button>
       <div class="section-label">Contact</div>
-      <div class="contact-row">✉️ <a href="mailto:contact@artisango.ci" style="color:var(--blue)">contact@artisango.ci</a></div>`;
+      <div class="contact-row">✉️ <a href="mailto:contact@ArtiZango.ci" style="color:var(--blue)">contact@ArtiZango.ci</a></div>`;
     nav('viewDetail');
   }
 
