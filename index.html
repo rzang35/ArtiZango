@@ -958,7 +958,8 @@ a{text-decoration:none;color:inherit}
           <option value="">Choisir le type de travaux…</option>
           <option>Plomberie</option><option>Électricité</option><option>Climatisation</option>
           <option>Menuiserie</option><option>Maçonnerie</option><option>Peinture</option>
-          <option>Informatique</option><option>Ménage</option><option>Autre</option>
+         <option>Construction</option><option>Achat en Chine</option><option>Mécanique</option>
+          <option>Maitre d'Oeuvre</option><option>Ménage</option><option>Autre</option>
         </select>
       </div>
       <div class="f-group">
@@ -1173,7 +1174,8 @@ a{text-decoration:none;color:inherit}
             <option value="">Choisir le type de travaux…</option>
             <option>Plombier</option><option>Électricien</option><option>Climatisation</option>
             <option>Menuisier</option><option>Maçon</option><option>Peintre</option>
-            <option>Informatique</option><option>Ménage</option><option>Autre</option>
+            <option>Achat en Chine</option><option>Mécanique</option><option>Construction</option>
+            <option>Maitre d'oeuvre</option><option>Ménage</option><option>Autre</option>
           </select>
         </div>
         <div class="f-group"><label class="f-label">Budget estimatif</label>
@@ -1264,7 +1266,8 @@ a{text-decoration:none;color:inherit}
           <option value="">Choisir…</option>
           <option>Plombier</option><option>Électricien</option><option>Climatisation</option>
           <option>Menuisier</option><option>Maçon</option><option>Peintre</option>
-          <option>Informatique</option><option>Ménage</option>
+         <option>Achat en Chine</option><option>Mécanique</option><option>Construction</option>
+          <option>Maître d'oeuvre</option><option>Ménage</option>
         </select>
       </div>
       <div class="f-group"><label class="f-label">Téléphone *</label><input class="f-input" type="tel" name="tel" required placeholder="+225 07 XX XX XX"></div>
@@ -1355,7 +1358,8 @@ function startWizard(metier){
     // map category names to select values
     const map={'Plomberie':'Plomberie','Électricité':'Électricité','Climatisation':'Climatisation',
       'Menuiserie':'Menuiserie','Maçonnerie':'Maçonnerie','Peinture':'Peinture',
-      'Informatique':'Informatique','Ménage':'Ménage'};
+      'Mécanique':'Mécanique','Construction':'Construction','Ménage':'Ménage'
+      'Maître d'Œuvre':'Maître d'Œuvre','Achat en Chine':'Achat en Chine','Autre':'Autre'};
     const sel=document.getElementById('wMetier');
     sel.value=map[metier]||metier;
   }
@@ -1414,8 +1418,11 @@ function wizardStep1Submit(e){
     'Menuiserie':'40 000 – 250 000 XOF',
     'Maçonnerie':'80 000 – 400 000 XOF',
     'Peinture':'30 000 – 150 000 XOF',
-    'Informatique':'15 000 – 80 000 XOF',
-    'Ménage':'10 000 – 30 000 XOF',
+    'Mécanique':'à partir de 10 000 XOF',
+    'Construction':'Sur Devis',
+    'Achat en Chine':'Sur Commission',
+    'Maître d'oeuvre':'Sur Commission',
+    'Ménage':'10 000 – 100 000 XOF',
   };
   document.getElementById('wPriceEstimate').textContent=priceMap[metier]||'selon devis';
   renderSelectionGrid(sel);
@@ -1731,101 +1738,6 @@ function submitInscription(e){
   toast('🎉 Profil créé !');
   goTo('pgArtisan');
   renderArtisans(ARTISANS);
-}
-
-/* ═══════════════════════════════════════
-   OPPORTUNITÉS ARTISAN
-═══════════════════════════════════════ */
-const OPPS_SAMPLE=[
-  {id:'o1',metier:'Plombier',commune:'Cocody',budget:'25 000 – 100 000 XOF',ago:'il y a 12 min',desc:'Fuite sous évier cuisine, intervention urgente.',price:'5 000 XOF'},
-  {id:'o2',metier:'Électricien',commune:'Plateau',budget:'100 000 – 300 000 XOF',ago:'il y a 34 min',desc:'Installation tableau électrique, appartement neuf.',price:'5 000 XOF'},
-  {id:'o3',metier:'Peintre',commune:'Yopougon',budget:'25 000 – 100 000 XOF',ago:'il y a 1h',desc:'Peinture 2 chambres et salon, appartement de 80m².',price:'5 000 XOF'},
-  {id:'o4',metier:'Maçon',commune:'Marcory',budget:'Plus de 300 000 XOF',ago:'il y a 2h',desc:'Extension maison, mur parpaings 30m².',price:'5 000 XOF'},
-];
-
-function renderOpps(){
-  const all=[...OPPS_SAMPLE,...DEMANDES.map(d=>({id:d.id,metier:d.metier,commune:d.commune,budget:d.budget||'Non défini',ago:'à l\'instant',desc:d.description,price:'5 000 XOF'}))];
-  document.getElementById('oppsList').innerHTML=all.map(o=>`
-    <div class="opp-card">
-      <div class="opp-header">
-        <div class="opp-icon">${metierIcon(o.metier)}</div>
-        <div>
-          <div class="opp-title">Recherche ${o.metier} à ${o.commune}</div>
-          <div class="opp-meta">
-            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Demande reçue ${o.ago}
-            <div class="opp-dot"></div>
-            ${o.commune}
-          </div>
-        </div>
-      </div>
-      <div class="opp-body">
-        <p><strong>Budget :</strong> ${o.budget}</p>
-        <p style="margin-top:6px"><strong>Besoin :</strong> ${o.desc.slice(0,80)}${o.desc.length>80?'…':''}</p>
-        <p style="margin-top:6px;filter:blur(5px);user-select:none">📞 +225 07 •• •• ••</p>
-      </div>
-      <div class="opp-cta">
-        <button class="btn-buy" onclick="buyContact('${o.id}')">
-          🔓 Acheter ce contact
-        </button>
-        <span class="opp-price">${o.price}</span>
-      </div>
-    </div>`).join('');
-}
-
-function buyContact(id){
-  toast('💳 Paiement en cours de mise en place. Contactez contact@artizango.ci');
-}
-
-function metierIcon(m){
-  const icons={Plombier:'🔧',Électricien:'⚡',Climatisation:'❄️',Menuisier:'🪵',Maçon:'🧱',Peintre:'🎨',Informatique:'💻',Ménage:'🧹'};
-  return icons[m]||'🔨';
-}
-
-/* ═══════════════════════════════════════
-   ADMIN
-═══════════════════════════════════════ */
-const STATUS_LABELS={new:'Nouveau',contact:'Contacté',sold:'Vendu',closed:'Clôturé'};
-const STATUS_CLASSES={new:'s-new',contact:'s-contact',sold:'s-sold',closed:'s-closed'};
-
-function renderAdmin(){
-  const list=DEMANDES;
-  document.getElementById('aStat1').textContent=list.length;
-  document.getElementById('aStat2').textContent=list.filter(d=>d.status==='new').length;
-  document.getElementById('aStat3').textContent=list.filter(d=>d.status==='contact').length;
-  document.getElementById('aStat4').textContent=list.filter(d=>d.status==='sold').length;
-  if(!list.length){
-    document.getElementById('adminList').innerHTML=`<div style="text-align:center;padding:40px 0;color:var(--t3)"><div style="font-size:36px;margin-bottom:10px">📋</div><p>Aucune demande pour le moment.</p></div>`;
-    return;
-  }
-  document.getElementById('adminList').innerHTML=list.map((d,i)=>`
-    <div class="demand-card">
-      <div class="demand-top">
-        <div class="demand-icon">${metierIcon(d.metier)}</div>
-        <div class="demand-info">
-          <div class="demand-name">${d.nom}</div>
-          <div class="demand-meta">${d.metier} · ${d.commune} · ${d.date}</div>
-        </div>
-      </div>
-      <div class="demand-tel">📞 ${d.tel}</div>
-      ${d.budget?`<div style="font-size:12px;color:var(--t3);margin-bottom:6px">💰 Budget : ${d.budget}</div>`:''}
-      <div class="demand-desc">${d.description}</div>
-      <div class="status-row">
-        <span class="status-badge ${STATUS_CLASSES[d.status]}">${STATUS_LABELS[d.status]}</span>
-        <select class="status-select" onchange="updateStatus(${i}, this.value)">
-          <option value="new" ${d.status==='new'?'selected':''}>Nouveau</option>
-          <option value="contact" ${d.status==='contact'?'selected':''}>Contacté</option>
-          <option value="sold" ${d.status==='sold'?'selected':''}>Vendu à un artisan</option>
-          <option value="closed" ${d.status==='closed'?'selected':''}>Clôturé</option>
-        </select>
-      </div>
-    </div>`).join('');
-}
-
-function updateStatus(i, val){
-  DEMANDES[i].status=val;
-  renderAdmin();
-  toast('Statut mis à jour');
 }
 
 /* ═══════════════════════════════════════
