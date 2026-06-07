@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ArtisanGo — Artisans vérifiés à Abidjan</title>
+<title>ArtiZango — Artisans vérifiés à Abidjan</title>
 <meta name="description" content="Trouvez un artisan de confiance à Abidjan. Plombiers, électriciens, maçons, menuisiers vérifiés près de chez vous.">
 <meta name="theme-color" content="#00A86B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -348,7 +348,7 @@ a{text-decoration:none;color:inherit}
 <!-- ═══════════════════ PAGE ACCUEIL ═══════════════════ -->
 <div id="pgHome" class="page on">
   <nav class="nav">
-    <div class="nav-logo" onclick="goHome()">ArtisanGo<div class="nav-logo-dot"></div></div>
+    <div class="nav-logo" onclick="goHome()">ArtiZango<div class="nav-logo-dot"></div></div>
     <div class="nav-right">
       <button class="nav-btn nav-btn-ghost" onclick="goTo('pgArtisan')">Je suis artisan</button>
       <button class="nav-btn nav-btn-primary" onclick="openDevisFor(null)">🤝 Être mis en relation</button>
@@ -452,7 +452,7 @@ a{text-decoration:none;color:inherit}
         </div>
         <div class="testi fu">
           <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">Électricien trouvé en moins de 24h. Très professionnel, l'équipe ArtisanGo répond vite. Vraiment rassurant de passer par eux.</p>
+          <p class="testi-text">Électricien trouvé en moins de 24h. Très professionnel, l'équipe ArtiZango répond vite. Vraiment rassurant de passer par eux.</p>
           <div class="testi-author"><div class="testi-av" style="background:var(--orl);color:var(--ord)">MT</div><div><div class="testi-name">Moussa Touré</div><div class="testi-service">Électricité · Plateau</div></div></div>
         </div>
         <div class="testi fu">
@@ -478,7 +478,7 @@ a{text-decoration:none;color:inherit}
 
   <footer class="footer">
     <div style="max-width:900px;margin:0 auto">
-      <div class="footer-logo">ArtisanGo</div>
+      <div class="footer-logo">ArtiZango</div>
       <div class="footer-tagline">La plateforme de confiance pour les artisans d'Abidjan</div>
       <div class="footer-links">
         <span class="footer-link" onclick="scrollToArtisans()">Trouver un artisan</span>
@@ -486,7 +486,7 @@ a{text-decoration:none;color:inherit}
         <span class="footer-link" onclick="goTo('pgArtisan')">Espace artisan</span>
         <span class="footer-link" onclick="goTo('pgAdmin')">Admin</span>
       </div>
-      <div class="footer-copy">© 2025 ArtisanGo · Abidjan, Côte d'Ivoire · contact@artisango.ci</div>
+      <div class="footer-copy">© 2025 ArtiZango · Abidjan, Côte d'Ivoire · contact@ArtiZango.ci</div>
     </div>
   </footer>
 </div>
@@ -637,7 +637,7 @@ a{text-decoration:none;color:inherit}
 
     <!-- REGISTER ARTISAN -->
     <div style="background:var(--t1);border-radius:var(--r);padding:22px;margin-top:8px;text-align:center">
-      <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px">Rejoignez ArtisanGo</div>
+      <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px">Rejoignez ArtiZango</div>
       <div style="font-size:14px;color:#94A3B8;margin-bottom:18px;line-height:1.6">Inscription gratuite. Recevez vos premiers contacts dès cette semaine.</div>
       <button class="btn-devis-lg" onclick="goTo('pgInscription')" style="max-width:300px;margin:0 auto">S'inscrire comme artisan</button>
     </div>
@@ -905,7 +905,7 @@ function submitDevis(e){
     artisan_nom:  artisanNom||'Non spécifié',
     artisan_id:   artisanId||'—',
     date_envoi:   data.date,
-    reply_to:     'noreply@artisango.ci'
+    reply_to:     'noreply@ArtiZango.ci'
   };
 
   emailjs.send(
@@ -996,7 +996,7 @@ function renderOpps(){
 }
 
 function buyContact(id){
-  toast('💳 Paiement en cours de mise en place. Contactez contact@artisango.ci');
+  toast('💳 Paiement en cours de mise en place. Contactez contact@ArtiZango.ci');
 }
 
 function metierIcon(m){
