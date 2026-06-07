@@ -641,7 +641,7 @@ a{text-decoration:none;color:inherit}
   <!-- ARTISANS -->
   <section class="section" id="artisanSection">
     <div class="section-inner">
-      <div class="fu"><div class="sec-tag">Sélection ArtiZango</div><h2 class="sec-h2" id="artisanSectionTitle">Nos artisans de confiance</h2><p class="sec-sub">Ces professionnels ont travaillé directement avec notre équipe. Nous connaissons leur qualité, leur sérieux et leur façon de travailler. Ce ne sont pas des inconnus, Nous les avons vus travailler. <strong>Nous répondons d'eux.</strong>.</p></div>
+      <div class="fu"><div class="sec-tag">Sélection ArtiZango</div><h2 class="sec-h2" id="artisanSectionTitle">Nos artisans de confiance</h2><p class="sec-sub">Ces professionnels ont travaillé directement avec notre équipe. Nous connaissons leur qualité, leur sérieux et leur façon de travailler. Ce ne sont pas des inconnus, <strong>nous répondons d'eux</strong>.</p></div>
       <div class="cards-grid" id="artisanGrid"></div>
       <div id="noResult" style="display:none;text-align:center;padding:40px 0;color:var(--t3)"><div style="font-size:36px;margin-bottom:10px">🔍</div><p>Aucun artisan trouvé.<br>Essayez un autre métier ou commune.</p></div>
     </div>
@@ -679,7 +679,7 @@ a{text-decoration:none;color:inherit}
           <div class="origin-card-icon">🔄</div>
           <div>
             <div class="origin-card-title">Suivi continu</div>
-            <div class="origin-card-desc">Après chaque mission client, nous collectons votre retour. Un artisan qui déçoit est retiré , immédiatement et sans exception.</div>
+            <div class="origin-card-desc">Après chaque mission client, nous collectons votre retour. Un artisan qui déçoit est retiré, immédiatement et sans exception.</div>
           </div>
         </div>
       </div>
@@ -740,7 +740,7 @@ a{text-decoration:none;color:inherit}
       <div class="fu" style="text-align:center;margin-bottom:4px">
         <div class="sec-tag">En 4 étapes simples</div>
         <h2 class="sec-h2">Un service pensé pour votre tranquillité</h2>
-        <p class="sec-sub">Du premier clic à la fin des travaux , ArtiZango s'occupe de tout.</p>
+        <p class="sec-sub">Du premier clic à la fin des travaux, ArtiZango s'occupe de tout.</p>
       </div>
       <div class="how-steps">
         <div class="hw-step fu">
@@ -811,7 +811,7 @@ a{text-decoration:none;color:inherit}
     <div class="cta-inner fu">
       <div style="display:flex;justify-content:center;margin-bottom:16px"><div class="cert-seal"><span class="cert-seal-icon">🛡️</span>Service ArtiZango certifié</div></div>
       <h2 class="cta-h2">Prêt à trouver l'artisan<br>qu'il vous faut ?</h2>
-      <p class="cta-sub">Décrivez votre besoin en 2 minutes. Notre équipe s'occupe du reste , analyse, estimation du prix, sélection de l'artisan et mise en relation.</p>
+      <p class="cta-sub">Décrivez votre besoin en 2 minutes. Notre équipe s'occupe du reste; analyse, estimation du prix, sélection de l'artisan et mise en relation.</p>
       <div class="cta-btns">
         <button class="cta-btn1" onclick="openDevisFor(null)">🤝 Être mis en relation</button>
         <button class="cta-btn2" onclick="goTo('pgArtisan')">Je suis artisan →</button>
@@ -1026,7 +1026,7 @@ a{text-decoration:none;color:inherit}
     <div class="profile-cert-block">
       <div class="pcb-title">
         <svg width="16" height="16" fill="none" stroke="#4ADE80" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Artisan formé &amp; certifié ArtiZango
+        Artisan Validé &amp; certifié ArtiZango
       </div>
       <div class="pcb-item"><div class="pcb-check">✓</div><div class="pcb-text">A travaillé sur des chantiers ArtiZango</div></div>
       <div class="pcb-item"><div class="pcb-check">✓</div><div class="pcb-text">Qualité évaluée directement par notre équipe</div></div>
@@ -1036,7 +1036,7 @@ a{text-decoration:none;color:inherit}
 
     <!-- PAS DE CONTACT DIRECT -->
     <div class="profile-cta-box">
-      <p>✅ <strong>Cet artisan a été formé et évalué par ArtiZango.</strong> Pour être mis en relation, cliquez ci-dessous. Notre équipe organise tout et vous rappelle sous 24h.</p>
+      <p>✅ <strong>Cet artisan a été Validé et évalué par ArtiZango.</strong> Pour être mis en relation, cliquez ci-dessous. Notre équipe organise tout et vous rappelle sous 24h.</p>
       <button class="btn-devis-lg" id="pDevisBtn" style="background:linear-gradient(135deg,var(--g),var(--gd))">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         Choisir cet artisan
@@ -1351,7 +1351,7 @@ function renderSelectionGrid(list){
           <div class="sel-trade">${a.metier}</div>
           <div class="sel-zone">📍 ${a.commune}</div>
           <div class="sel-badges">
-            <span class="badge b-verified" style="font-size:10px">🏗️ Formé ArtiZango</span>
+            <span class="badge b-verified" style="font-size:10px">🏗️ Validé ArtiZango</span>
             ${a.dispo?'<span class="badge b-reactive" style="font-size:10px">⚡ Disponible</span>':''}
           </div>
         </div>
@@ -1469,7 +1469,7 @@ function renderArtisans(list){
         </div>
         <p class="a-desc">${a.desc}</p>
         <div style="font-size:11px;color:var(--t3);margin-top:8px;display:flex;align-items:center;gap:4px;flex-wrap:wrap">
-          <span style="color:var(--g)">✓</span> Formé par ArtiZango &nbsp;·&nbsp;
+          <span style="color:var(--g)">✓</span> Validé par ArtiZango &nbsp;·&nbsp;
           <span style="color:var(--g)">✓</span> Qualité contrôlée &nbsp;·&nbsp;
           <span style="color:var(--g)">✓</span> ${a.exp} d'expérience
         </div>
