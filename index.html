@@ -1681,52 +1681,63 @@ function submitDevis(e){
   data.date=new Date().toLocaleString('fr-FR');
   data.status='new';
 
-  // Artisan target info
-  const artisanNom=document.getElementById('devisArtisanNom').value;
-  const artisanId=document.getElementById('devisArtisanId').value;
+  const artisanNom=document.getElementById('devisArtisanNom').value||'Non spécifié';
+  const artisanId=document.getElementById('devisArtisanId').value||'—';
 
-  // Store locally
   DEMANDES.unshift(data);
 
-  // Show loading state
   const btn=form.querySelector('button[type="submit"]');
   const origText=btn.innerHTML;
   btn.innerHTML='⏳ Envoi en cours…';
   btn.disabled=true;
 
-  // EmailJS send
-  const templateParams={
-    to_email:     'abideniromeo@gmail.com',
-    client_nom:   data.nom,
-    client_tel:   data.tel,
-    client_commune: data.commune,
-    metier:       data.metier,
-    budget:       data.budget||'Non précisé',
-    description:  data.description,
-    artisan_nom:  artisanNom||'Non spécifié',
-    artisan_id:   artisanId||'—',
-    date_envoi:   data.date,
-    reply_to:     'noreply@ArtiLinKo.ci'
-  };
+  // ── WHATSAPP ──────────────────────────────
+  const waMessage=
+`🔔 *Nouvelle demande ArtiLinKo*
 
-  emailjs.send(
+👤 *Client :* ${data.nom}
+📞 *Téléphone :* ${data.tel}
+📍 *Commune :* ${data.commune}
+🔨 *Service :* ${data.metier}
+💰 *Budget :* ${data.budget||'Non précisé'}
+⏱️ *Urgence :* ${data.urgence||'Non précisée'}
+📝 *Besoin :* ${data.description}
+🎯 *Artisan choisi :* ${artisanNom}
+🕐 *Date :* ${data.date}`;
+
+  const waFetch=fetch(
+    `https://api.callmebot.com/whatsapp.php?phone=2250506267576&text=${encodeURIComponent(waMessage)}&apikey=TON_API_KEY`
+  ).catch(err=>console.warn('WhatsApp error:',err));
+
+  // ── EMAIL ─────────────────────────────────
+  const emailFetch=emailjs.send(
     EMAILJS_SERVICE_ID,
     EMAILJS_TEMPLATE_ID,
-    templateParams
-  ).then(()=>{
-    showSuccess(data.nom);
-  }).catch(err=>{
-    console.warn('EmailJS error:', err);
-    // Fallback: still show success (don't block UX)
-    showSuccess(data.nom);
-  }).finally(()=>{
+    {
+      to_email:      'abideniromeo@gmail.com',
+      client_nom:    data.nom,
+      client_tel:    data.tel,
+      client_commune:data.commune,
+      metier:        data.metier,
+      budget:        data.budget||'Non précisé',
+      description:   data.description,
+      artisan_nom:   artisanNom,
+      artisan_id:    artisanId,
+      date_envoi:    data.date,
+      reply_to:      'noreply@artilinko.com'
+    }
+  ).catch(err=>console.warn('EmailJS error:',err));
+
+  // ── ENVOYER LES DEUX EN PARALLÈLE ────────
+  Promise.allSettled([waFetch,emailFetch]).then(()=>{
     btn.innerHTML=origText;
     btn.disabled=false;
     form.reset();
     document.getElementById('devisArtisanId').value='';
     document.getElementById('devisArtisanNom').value='';
     document.getElementById('artisanTarget').style.display='none';
-    renderOpps();
+    showSuccess(data.nom);
+    toast('✅ Demande transmise !');
   });
 }
 
